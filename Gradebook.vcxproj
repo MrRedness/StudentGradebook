@@ -139,10 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Add.cpp" />
     <ClCompile Include="Gradebook.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Gradebook-old\include\Add.hpp" />
+    <ClInclude Include="Add.hpp" />
+    <ClInclude Include="MrRed.hpp" />
+    <ClInclude Include="Student.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

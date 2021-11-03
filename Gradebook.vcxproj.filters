@@ -18,9 +18,18 @@
     <ClCompile Include="Gradebook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Add.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Gradebook-old\include\Add.hpp">
+    <ClInclude Include="Add.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Student.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MrRed.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
