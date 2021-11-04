@@ -81,55 +81,61 @@ bool Student::setNamesOfClasses(const std::vector<std::string>& newNamesOfClasse
 
 bool Student::addClass()
 {
-	if (numberOfClasses = 10)
+	if (numberOfClasses == 10)
 		return false;
 	numberOfClasses++;
 	namesOfClasses.emplace_back("");
+	return true;
 }
 
 bool Student::addClass(const int& classPeriod)
 {
-	if (numberOfClasses = 10 || classPeriod <= 0 || classPeriod > (numberOfClasses + 1))
+	if (numberOfClasses == 10 || classPeriod <= 0 || classPeriod > (numberOfClasses + 1))
 		return false;
 	numberOfClasses++;
 	namesOfClasses.emplace(namesOfClasses.begin() + (classPeriod - 1), "");
+	return true;
 }
 
 bool Student::addClass(const std::string& className)
 {
-	if (numberOfClasses = 10)
+	if (numberOfClasses == 10)
 		return false;
 	numberOfClasses++;
 	namesOfClasses.emplace_back(className);
+	return true;
 }
 
 bool Student::addClass(const int& classPeriod, const std::string& className)
 {
-	if (numberOfClasses = 10 || classPeriod <= 0 || classPeriod > (numberOfClasses + 1))
+	if (numberOfClasses == 10 || classPeriod <= 0 || classPeriod > (numberOfClasses + 1))
 		return false;
 	numberOfClasses++;
 	namesOfClasses.emplace(namesOfClasses.begin() + (classPeriod - 1), className);
+	return true;
 }
 
 bool Student::removeClass()
 {
-	if (numberOfClasses = 1)
+	if (numberOfClasses == 1)
 		return false;
 	numberOfClasses--;
 	namesOfClasses.pop_back();
+	return true;
 }
 
 bool Student::removeClass(const int& classPeriod)
 {
-	if (numberOfClasses = 1 || classPeriod <= 0 || classPeriod > numberOfClasses)
+	if (numberOfClasses == 1 || classPeriod <= 0 || classPeriod > numberOfClasses)
 		return false;
 	numberOfClasses--;
 	namesOfClasses.erase(namesOfClasses.begin() + (classPeriod - 1));
+	return true;
 }
 
 bool Student::removeClass(const std::string& className)
 {
-	if (numberOfClasses = 1)
+	if (numberOfClasses == 1)
 		return false;
 	numberOfClasses--;
 	for (int i = 0; i < numberOfClasses; i++)
@@ -137,6 +143,7 @@ bool Student::removeClass(const std::string& className)
 		if (stringEqualsIgnoreCase(namesOfClasses[i], className))
 		{
 			namesOfClasses.erase(namesOfClasses.begin() + i);
+			return true;
 		}
 	}
 	return false;
@@ -144,9 +151,9 @@ bool Student::removeClass(const std::string& className)
 
 std::ostream& operator<<(std::ostream& stream, const Student& student)
 {
-	stream << "\nStudent Name: " << student.getName()
-		<< "\n Number of Classes " << student.getName() << " is taking: " << student.getNumberOfClasses()
-		<< "\n The names of those Classes: ";
+	stream << "\n\nStudent Name: " << student.getName() << std::endl
+		<< "\nNumber of Classes " << student.getName() << " is taking: " << student.getNumberOfClasses() << std::endl
+		<< "\nThe names of those Classes: " << std::endl;
 	for (std::string nameOfClass : student.getNamesOfClasses())
 	{
 		stream << "\n" << nameOfClass;

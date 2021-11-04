@@ -1,8 +1,8 @@
-#include <iostream>
-#include <thread>
+// #include <iostream>
+// #include <thread>
 #include "Add.hpp"
 #include "MrRed.hpp"
-#include "Student.hpp"
+// #include "Student.hpp"
 //#include <chrono>
 
 int main()
@@ -10,16 +10,13 @@ int main()
     bool runningProgram = true;
     while (runningProgram) {
         using namespace std::chrono_literals;
-        std::cout << "Welcome to the Gradebook \n";
-        std::this_thread::sleep_for(1s);
-        std::cout << "Would you like to... \n";
-        std::this_thread::sleep_for(1s);
-        std::cout << "Add a Student? (type add) \n";
-        std::this_thread::sleep_for(1s);
-        std::cout << "Check Student Info? (type check) \n";
-        std::this_thread::sleep_for(1s);
-        std::cout << "Or input grades? (type input) \n";
+        cOutAndWait("Welcome to the Gradebook", 1);
+        cOutAndWait("Would you like to...", 1);
+        cOutAndWait("Add a Student? (type add)", 1);
+        cOutAndWait("Check Student Info? (type check)", 1);
+        cOutAndWait("Or input grades? (type input)", 1);
         std::cout << ":";
+        // Student* firstStudent;
         bool reenteringChoice;
         do {
             std::string choice;
@@ -27,20 +24,21 @@ int main()
             reenteringChoice = false;
             if (stringEqualsIgnoreCase(choice, "add", "a"))
             {
-                std::cout << "\nOk, let's add a student!\n\n";
+                cOutAndWait("\nOk, let's add a student!\n", 1);
                 Student student = Add::addStudent();
-                std::cout << student << "\n"
+                std::cout << student << "\n\n";
             }
             else if (stringEqualsIgnoreCase(choice, "check", "c"))
             {
-                std::cout << "Ok, let's check a student's info!\n";
+                cOutAndWait("Ok, let's check a student's info!\n", 1);
+                // std::cout << student << "\n\n";
             }
             else if (stringEqualsIgnoreCase(choice, "input", "i"))
             {
-                std::cout << "Ok, time to input grades!\n";
+                cOutAndWait("Ok, time to input grades!\n", 1);
             }
             else {
-                std::cout << "I'm sorry. It seems you entered an invalid choice. Please use \"add\", \"check\", or \"input\".\n:";
+                cOutAndWait("I'm sorry. It seems you entered an invalid choice. Please use \"add\", \"check\", or \"input\".\n:", 1);
                 reenteringChoice = true;
             }
         } while (reenteringChoice);

@@ -2,10 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "MrRed.hpp"
-#include <thread>
-#include <string>
-#include "Student.hpp"
-
+// #include <string>
 
 Student Add::addStudent()
 {
@@ -26,7 +23,8 @@ Student Add::addStudent()
 		std::cin >> numberOfClasses;
 	}
 	bool invalidAnswer;
-	do {
+	do
+	{
 		invalidAnswer = false;
 		std::cout << "\n\nWould you like to give each class a name? (type yes/no)\n:";
 		std::cin >> nameClasses;
@@ -40,30 +38,25 @@ Student Add::addStudent()
 			for (int i = 0; i < numberOfClasses; i++)
 			{
 				std::cout << "\nClass " << i + 1 << "\n:";
-				std::this_thread::sleep_for(.2s);
 				std::getline(std::cin, input);
 				namesOfClasses.emplace_back(input);
 			}
-			//for (int i = 0; i < numberOfClasses; i++) 
+			//for (int i = 0; i < numberOfClasses; i++)
 			//{
 			//	std::cout << "\n" << namesOfClasses[i];
 			//}
 			std::cout << "\n\nStudent " << name << " successfully added!\n\n";
 			return Student(name, numberOfClasses, namesOfClasses);
-
-
-
 		}
 		else if (stringEqualsIgnoreCase(nameClasses, "no", "n"))
 		{
 			std::cout << "\n\nStudent " << name << " successfully added!\n\n";
-			return Student(name, numberOfClasses);
 		}
-		else {
+		else
+		{
 			std::cout << "\nPlease type either \"yes\" or \"no\".";
 			invalidAnswer = true;
 		}
 	} while (invalidAnswer);
-
-
+	return Student(name, numberOfClasses);
 }
