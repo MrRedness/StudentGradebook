@@ -4,9 +4,10 @@
 #include "MrRed.hpp"
 #include <thread>
 #include <string>
+#include "Student.hpp"
 
 
-void Add::addStudent()
+Student Add::addStudent()
 {
 	using namespace std::chrono_literals;
 
@@ -31,9 +32,9 @@ void Add::addStudent()
 		std::cin >> nameClasses;
 		if (stringEqualsIgnoreCase(nameClasses, "yes", "y"))
 		{
-			auto namesOfClasses = new std::string[numberOfClasses];
-			//std::vector<std::string> namesOfClasses;
-			std::cout << "\nPlease enter the name for this class or type \"none\" if you wish to leave it blank\n";
+			//auto namesOfClasses = new std::string[numberOfClasses];
+			std::vector<std::string> namesOfClasses;
+			std::cout << "\nPlease enter the name for each class or leave it blank\n";
 			std::string input;
 			std::getline(std::cin, input);
 			for (int i = 0; i < numberOfClasses; i++)
@@ -41,22 +42,28 @@ void Add::addStudent()
 				std::cout << "\nClass " << i + 1 << "\n:";
 				std::this_thread::sleep_for(.2s);
 				std::getline(std::cin, input);
-				namesOfClasses[i] = input;
+				namesOfClasses.emplace_back(input);
 			}
-			for (int i = 0; i < numberOfClasses; i++) 
-			{
-				std::cout << "\n" << namesOfClasses[i];
-			}
+			//for (int i = 0; i < numberOfClasses; i++) 
+			//{
+			//	std::cout << "\n" << namesOfClasses[i];
+			//}
+			std::cout << "\n\nStudent " << name << " successfully added!\n\n";
+			return Student(name, numberOfClasses, namesOfClasses);
+
+
 
 		}
 		else if (stringEqualsIgnoreCase(nameClasses, "no", "n"))
 		{
+			std::cout << "\n\nStudent " << name << " successfully added!\n\n";
+			return Student(name, numberOfClasses);
 		}
 		else {
 			std::cout << "\nPlease type either \"yes\" or \"no\".";
 			invalidAnswer = true;
 		}
 	} while (invalidAnswer);
-	std::cout << "\n\nStudent " << name << " successfully added!\n\n";
+
 
 }

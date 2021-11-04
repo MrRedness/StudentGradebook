@@ -1,6 +1,7 @@
 #pragma once
+#include "Student.hpp"
 
 namespace Add
 {
-    void addStudent();
+    Student addStudent();
 }

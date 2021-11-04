@@ -2,6 +2,7 @@
 #include <thread>
 #include "Add.hpp"
 #include "MrRed.hpp"
+#include "Student.hpp"
 //#include <chrono>
 
 int main()
@@ -27,7 +28,8 @@ int main()
             if (stringEqualsIgnoreCase(choice, "add", "a"))
             {
                 std::cout << "\nOk, let's add a student!\n\n";
-                Add::addStudent();
+                Student student = Add::addStudent();
+                std::cout << student << "\n"
             }
             else if (stringEqualsIgnoreCase(choice, "check", "c"))
             {

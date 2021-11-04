@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Add.cpp" />
     <ClCompile Include="Gradebook.cpp" />
+    <ClCompile Include="Student.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Add.hpp" />
