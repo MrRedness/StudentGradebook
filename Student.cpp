@@ -1,16 +1,16 @@
 #include "Student.hpp"
 #include "MrRed.hpp"
 
-Student::Student(std::string_view name, const int& numberOfClasses)
+Student::Student(std::string_view name, int const& numberOfClasses)
 	: name(name), numberOfClasses(numberOfClasses)
 {
 	for (int i = 0; i < numberOfClasses; i++) {
 		namesOfClasses.emplace_back("");
 	}
 };
-Student::Student(std::string_view name, const int& numberOfClasses, const std::vector<std::string>& namesOfClasses)
+Student::Student(std::string_view name, int const& numberOfClasses, std::vector<std::string> const& namesOfClasses)
 	: name(name), numberOfClasses(numberOfClasses), namesOfClasses(namesOfClasses) {};
-Student::Student(std::string_view name, const std::vector<std::string>& namesOfClasses)
+Student::Student(std::string_view name, std::vector<std::string> const& namesOfClasses)
 	: name(name), namesOfClasses(namesOfClasses), numberOfClasses(namesOfClasses.size()) {};
 
 std::string Student::getName() const { return name; }
@@ -39,11 +39,11 @@ std::vector<std::string> Student::getNamesOfClasses() const { return namesOfClas
 
 void Student::setName(std::string_view name) { this->name = name; }
 
-//void Student::setNumberOfClasses(const int& numberOfClasses) { 
+//void Student::setNumberOfClasses(int const& numberOfClasses) { 
 //	this->numberOfClasses = numberOfClasses; 
 //}
 
-bool Student::setNameOfClass(const int& classPeriod, std::string_view newName)
+bool Student::setNameOfClass(int const& classPeriod, std::string_view newName)
 {
 	for (std::string nameOfClass : namesOfClasses)
 	{
@@ -69,7 +69,7 @@ bool Student::setNameOfClass(std::string_view oldName, std::string_view newName)
 	return false;
 }
 
-bool Student::setNamesOfClasses(const std::vector<std::string>& newNamesOfClasses)
+bool Student::setNamesOfClasses(std::vector<std::string> const& newNamesOfClasses)
 {
 	if (newNamesOfClasses.size() == numberOfClasses)
 	{
@@ -88,7 +88,7 @@ bool Student::addClass()
 	return true;
 }
 
-bool Student::addClass(const int& classPeriod)
+bool Student::addClass(int const& classPeriod)
 {
 	if (numberOfClasses == 10 || classPeriod <= 0 || classPeriod > (numberOfClasses + 1))
 		return false;
@@ -106,7 +106,7 @@ bool Student::addClass(std::string_view className)
 	return true;
 }
 
-bool Student::addClass(const int& classPeriod, std::string_view className)
+bool Student::addClass(int const& classPeriod, std::string_view className)
 {
 	if (numberOfClasses == 10 || classPeriod <= 0 || classPeriod > (numberOfClasses + 1))
 		return false;
@@ -124,7 +124,7 @@ bool Student::removeClass()
 	return true;
 }
 
-bool Student::removeClass(const int& classPeriod)
+bool Student::removeClass(int const& classPeriod)
 {
 	if (numberOfClasses == 1 || classPeriod <= 0 || classPeriod > numberOfClasses)
 		return false;
@@ -149,7 +149,7 @@ bool Student::removeClass(std::string_view className)
 	return false;
 }
 
-std::ostream& operator<<(std::ostream& stream, const Student& student)
+std::ostream& operator<<(std::ostream& stream, Student const& student)
 {
 	stream << "\n\nStudent Name: " << student.getName() << std::endl;
 	std::this_thread::sleep_for(std::chrono::milliseconds{ 500 });

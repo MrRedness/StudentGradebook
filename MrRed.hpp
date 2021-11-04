@@ -21,7 +21,7 @@ inline bool stringEqualsIgnoreCase(std::string_view a, std::string_view b, std::
 	return stringEqualsIgnoreCase(a, b) || stringEqualsIgnoreCase(a, orC);
 }
 
-inline void cOutAndWait(std::string_view msg, const int& timeToWait)
+inline void cOutAndWait(std::string_view msg, int const& timeToWait)
 {
 	std::cout << msg << std::endl;
 	std::this_thread::sleep_for(std::chrono::seconds{ timeToWait });
