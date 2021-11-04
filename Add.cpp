@@ -1,8 +1,8 @@
 #include "Add.hpp"
-#include <iostream>
+//#include <iostream>
 #include <vector>
 #include "MrRed.hpp"
-// #include <string>
+ #include <string>
 
 Student Add::addStudent()
 {
@@ -16,12 +16,7 @@ Student Add::addStudent()
 	std::getline(std::cin, name);
 	std::getline(std::cin, name);
 	std::cout << "\n\nOk, how many classes is " + name + " taking?\n:";
-	std::cin >> numberOfClasses;
-	while (numberOfClasses <= 0 || numberOfClasses > 10)
-	{
-		std::cout << "\n\nWoah there, that's a strange number. Try something between 1 and 10.\n:";
-		std::cin >> numberOfClasses;
-	}
+	numberOfClasses = cinInt(1, 10);
 	bool invalidAnswer;
 	do
 	{

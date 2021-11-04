@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
+//#include <string_view>
 
 class Student {
 private:
@@ -8,9 +9,9 @@ private:
 	int numberOfClasses;
 	std::vector<std::string> namesOfClasses;
 public:
-	Student(const std::string& name, const int& numberOfClasses);
-	Student(const std::string& name, const int& numberOfClasses, const std::vector<std::string>& namesOfClasses);
-	Student(const std::string& name, const std::vector<std::string>& namesOfClasses);
+	Student(std::string_view name, const int& numberOfClasses);
+	Student(std::string_view name, const int& numberOfClasses, const std::vector<std::string>& namesOfClasses);
+	Student(std::string_view name, const std::vector<std::string>& namesOfClasses);
 
 	std::string getName() const;
 	int getNumberOfClasses() const;
@@ -18,20 +19,20 @@ public:
 	int getClassPeriod(std::string className) const;
 	std::vector<std::string> getNamesOfClasses() const;
 
-	void setName(const std::string& name);
+	void setName(std::string_view name);
 	//void setNumberOfClasses(const int& numberOfClasses);
-	bool setNameOfClass(const int& classPeriod, const std::string& newName);
-	bool setNameOfClass(const std::string& oldName, const std::string& newName);
+	bool setNameOfClass(const int& classPeriod, std::string_view newName);
+	bool setNameOfClass(std::string_view oldName, std::string_view newName);
 	bool setNamesOfClasses(const std::vector<std::string>& newNamesOfClasses);
 
 	bool addClass();
 	bool addClass(const int& classPeriod); // Moves everything above classPeriod forward one
-	bool addClass(const std::string& className);
-	bool addClass(const int& classPeriod, const std::string& className);
+	bool addClass(std::string_view className);
+	bool addClass(const int& classPeriod, std::string_view className);
 
 	bool removeClass();
 	bool removeClass(const int& classPeriod);
-	bool removeClass(const std::string& className);
+	bool removeClass(std::string_view className);
 };
 
 std::ostream& operator<<(std::ostream& stream, const Student& student);

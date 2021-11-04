@@ -1,13 +1,17 @@
 // #include <iostream>
 // #include <thread>
-#include "Add.hpp"
-#include "MrRed.hpp"
 // #include "Student.hpp"
 //#include <chrono>
+//#include <vector>
+
+#include "Add.hpp"
+#include "MrRed.hpp"
+//These should include all the commented out includes
 
 int main()
 {
     bool runningProgram = true;
+    std::vector<Student> students;
     while (runningProgram) {
         using namespace std::chrono_literals;
         cOutAndWait("Welcome to the Gradebook", 1);
@@ -16,7 +20,6 @@ int main()
         cOutAndWait("Check Student Info? (type check)", 1);
         cOutAndWait("Or input grades? (type input)", 1);
         std::cout << ":";
-        // Student* firstStudent;
         bool reenteringChoice;
         do {
             std::string choice;
@@ -25,20 +28,22 @@ int main()
             if (stringEqualsIgnoreCase(choice, "add", "a"))
             {
                 cOutAndWait("\nOk, let's add a student!\n", 1);
-                Student student = Add::addStudent();
-                std::cout << student << "\n\n";
+                students.emplace_back(Add::addStudent());
+                std::cout << students.back() << "\n\n";
             }
             else if (stringEqualsIgnoreCase(choice, "check", "c"))
             {
                 cOutAndWait("Ok, let's check a student's info!\n", 1);
-                // std::cout << student << "\n\n";
+                for (Student student : students)
+                    std::cout << student;
             }
             else if (stringEqualsIgnoreCase(choice, "input", "i"))
             {
                 cOutAndWait("Ok, time to input grades!\n", 1);
             }
             else {
-                cOutAndWait("I'm sorry. It seems you entered an invalid choice. Please use \"add\", \"check\", or \"input\".\n:", 1);
+                cOutAndWait("\nI'm sorry. It seems you entered an invalid choice. Please use \"add\", \"check\", or \"input\".\n", 1);
+                std::cout << ":";
                 reenteringChoice = true;
             }
         } while (reenteringChoice);
