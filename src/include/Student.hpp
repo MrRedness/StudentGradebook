@@ -9,6 +9,7 @@ private:
 	unsigned int numberOfClasses;
 	bool namesOfClassesIsNotEmpty;
 	std::vector<std::string> namesOfClasses;
+	std::vector<unsigned int> grades;
 public:
 	Student(std::string_view name, int const& numberOfClasses);
 	Student(std::string_view name, int const& numberOfClasses, std::vector<std::string> const& namesOfClasses);
