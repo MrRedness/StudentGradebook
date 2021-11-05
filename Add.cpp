@@ -1,6 +1,7 @@
 #include "Add.hpp"
-//#include <iostream>
+#include <iostream>
 #include <vector>
+#include <chrono>
 #include "MrRed.hpp"
  #include <string>
 
@@ -23,7 +24,7 @@ Student Add::addStudent()
 		invalidAnswer = false;
 		std::cout << "\n\nWould you like to give each class a name? (type yes/no)\n:";
 		std::cin >> nameClasses;
-		if (stringEqualsIgnoreCase(nameClasses, "yes", "y"))
+		if (stringEqualsOneOfTheFollowingIgnoreCase(nameClasses, { "yes", "y" }))
 		{
 			//auto namesOfClasses = new std::string[numberOfClasses];
 			std::vector<std::string> namesOfClasses;
@@ -36,14 +37,14 @@ Student Add::addStudent()
 				std::getline(std::cin, input);
 				namesOfClasses.emplace_back(input);
 			}
-			//for (int i = 0; i < numberOfClasses; i++)
+			//for (unsigned int i = 0; i < numberOfClasses; i++)
 			//{
 			//	std::cout << "\n" << namesOfClasses[i];
 			//}
 			std::cout << "\n\nStudent " << name << " successfully added!\n\n";
 			return Student(name, numberOfClasses, namesOfClasses);
 		}
-		else if (stringEqualsIgnoreCase(nameClasses, "no", "n"))
+		else if (stringEqualsOneOfTheFollowingIgnoreCase(nameClasses, { "no", "n" }))
 		{
 			std::cout << "\n\nStudent " << name << " successfully added!\n\n";
 		}

@@ -6,7 +6,7 @@
 class Student {
 private:
 	std::string name;
-	int numberOfClasses;
+	unsigned int numberOfClasses;
 	std::vector<std::string> namesOfClasses;
 public:
 	Student(std::string_view name, int const& numberOfClasses);

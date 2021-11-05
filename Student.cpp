@@ -1,5 +1,8 @@
 #include "Student.hpp"
 #include "MrRed.hpp"
+#include <chrono>
+#include <thread>
+#include <vector>
 
 Student::Student(std::string_view name, int const& numberOfClasses)
 	: name(name), numberOfClasses(numberOfClasses)
@@ -37,7 +40,7 @@ int Student::getClassPeriod(std::string className) const
 
 std::vector<std::string> Student::getNamesOfClasses() const { return namesOfClasses; }
 
-void Student::setName(std::string_view name) { this->name = name; }
+void Student::setName(std::string_view newName) { this->name = newName; }
 
 //void Student::setNumberOfClasses(int const& numberOfClasses) { 
 //	this->numberOfClasses = numberOfClasses; 
@@ -45,15 +48,10 @@ void Student::setName(std::string_view name) { this->name = name; }
 
 bool Student::setNameOfClass(int const& classPeriod, std::string_view newName)
 {
-	for (std::string nameOfClass : namesOfClasses)
-	{
-		if (stringEqualsIgnoreCase(nameOfClass, newName))
-		{
-			nameOfClass = newName;
-			return true;
-		}
-	}
-	return false;
+	if (classPeriod <= 0 || classPeriod > numberOfClasses)
+		return false;
+	namesOfClasses[classPeriod] = newName;
+	return true;
 }
 
 bool Student::setNameOfClass(std::string_view oldName, std::string_view newName)
@@ -153,7 +151,7 @@ std::ostream& operator<<(std::ostream& stream, Student const& student)
 {
 	stream << "\n\nStudent Name: " << student.getName() << std::endl;
 	std::this_thread::sleep_for(std::chrono::milliseconds{ 500 });
-	stream << "\nNumber of Classes " << student.getName() << " is taking: " << student.getNumberOfClasses() << std::endl;
+	stream << "\nNumber of classes " << student.getName() << " is taking: " << student.getNumberOfClasses() << std::endl;
 	std::this_thread::sleep_for(std::chrono::milliseconds{ 500 });
 	stream << "\nThe names of those classes: " << std::endl;
 	std::this_thread::sleep_for(std::chrono::milliseconds{ 500 });
