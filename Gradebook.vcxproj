@@ -72,6 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(ProjectDir)src\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -141,15 +142,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Add.cpp" />
-    <ClCompile Include="Gradebook.cpp" />
-    <ClCompile Include="MrRed.cpp" />
-    <ClCompile Include="Student.cpp" />
+    <ClCompile Include="src\cpp\Add.cpp" />
+    <ClCompile Include="src\cpp\Check.cpp" />
+    <ClCompile Include="src\cpp\Gradebook.cpp" />
+    <ClCompile Include="src\cpp\MrRed.cpp" />
+    <ClCompile Include="src\cpp\Student.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Add.hpp" />
-    <ClInclude Include="MrRed.hpp" />
-    <ClInclude Include="Student.hpp" />
+    <ClInclude Include="src\include\Add.hpp" />
+    <ClInclude Include="src\include\Check.hpp" />
+    <ClInclude Include="src\include\MrRed.hpp" />
+    <ClInclude Include="src\include\Student.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

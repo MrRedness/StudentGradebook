@@ -5,22 +5,22 @@
 #include <vector>
 
 Student::Student(std::string_view name, int const& numberOfClasses)
-	: name(name), numberOfClasses(numberOfClasses)
+	: name(name), numberOfClasses(numberOfClasses), namesOfClassesIsNotEmpty(false)
 {
 	for (int i = 0; i < numberOfClasses; i++) {
 		namesOfClasses.emplace_back("");
 	}
 };
 Student::Student(std::string_view name, int const& numberOfClasses, std::vector<std::string> const& namesOfClasses)
-	: name(name), numberOfClasses(numberOfClasses), namesOfClasses(namesOfClasses) {};
+	: name(name), numberOfClasses(numberOfClasses), namesOfClasses(namesOfClasses), namesOfClassesIsNotEmpty(true) {};
 Student::Student(std::string_view name, std::vector<std::string> const& namesOfClasses)
-	: name(name), namesOfClasses(namesOfClasses), numberOfClasses(namesOfClasses.size()) {};
+	: name(name), namesOfClasses(namesOfClasses), namesOfClassesIsNotEmpty(true), numberOfClasses(namesOfClasses.size()) {};
 
 std::string Student::getName() const { return name; }
 
 int Student::getNumberOfClasses() const { return numberOfClasses; }
 
-std::string Student::getNameOfClass(int classNumber) const
+std::string Student::getNameOfClass(int const& classNumber) const
 {
 	if (classNumber > 0 && classNumber <= numberOfClasses)
 		return namesOfClasses.at(classNumber - 1);
@@ -28,7 +28,7 @@ std::string Student::getNameOfClass(int classNumber) const
 		return "Invalid Class Number";
 }
 
-int Student::getClassPeriod(std::string className) const
+int Student::getClassPeriod(std::string_view className) const
 {
 	for (int i = 0; i < numberOfClasses; i++)
 	{
@@ -37,6 +37,8 @@ int Student::getClassPeriod(std::string className) const
 	}
 	return 0;
 }
+
+bool Student::hasNamesForClasses() const { return namesOfClassesIsNotEmpty; }
 
 std::vector<std::string> Student::getNamesOfClasses() const { return namesOfClasses; }
 
@@ -153,12 +155,15 @@ std::ostream& operator<<(std::ostream& stream, Student const& student)
 	std::this_thread::sleep_for(std::chrono::milliseconds{ 500 });
 	stream << "\nNumber of classes " << student.getName() << " is taking: " << student.getNumberOfClasses() << std::endl;
 	std::this_thread::sleep_for(std::chrono::milliseconds{ 500 });
-	stream << "\nThe names of those classes: " << std::endl;
-	std::this_thread::sleep_for(std::chrono::milliseconds{ 500 });
-	for (std::string nameOfClass : student.getNamesOfClasses())
+	if (student.hasNamesForClasses())
 	{
-		stream << "\n" << nameOfClass;
+		stream << "\nThe names of those classes: " << std::endl;
 		std::this_thread::sleep_for(std::chrono::milliseconds{ 500 });
+		for (std::string nameOfClass : student.getNamesOfClasses())
+		{
+			stream << "\n" << nameOfClass;
+			std::this_thread::sleep_for(std::chrono::milliseconds{ 500 });
+		}
 	}
 	return stream;
 }

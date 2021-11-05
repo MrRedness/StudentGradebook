@@ -7,6 +7,7 @@ class Student {
 private:
 	std::string name;
 	unsigned int numberOfClasses;
+	bool namesOfClassesIsNotEmpty;
 	std::vector<std::string> namesOfClasses;
 public:
 	Student(std::string_view name, int const& numberOfClasses);
@@ -15,9 +16,10 @@ public:
 
 	std::string getName() const;
 	int getNumberOfClasses() const;
-	std::string getNameOfClass(int classNumber) const;
-	int getClassPeriod(std::string className) const;
+	std::string getNameOfClass(int const& classNumber) const;
+	int getClassPeriod(std::string_view className) const;
 	std::vector<std::string> getNamesOfClasses() const;
+	bool hasNamesForClasses() const;
 
 	void setName(std::string_view name);
 	//void setNumberOfClasses(int const& numberOfClasses);

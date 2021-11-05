@@ -15,27 +15,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Gradebook.cpp">
+    <ClCompile Include="src\cpp\Gradebook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Add.cpp">
+    <ClCompile Include="src\cpp\Add.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Student.cpp">
+    <ClCompile Include="src\cpp\Student.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MrRed.cpp">
+    <ClCompile Include="src\cpp\MrRed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp\Check.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Add.hpp">
+    <ClInclude Include="src\include\Add.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Student.hpp">
+    <ClInclude Include="src\include\Student.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MrRed.hpp">
+    <ClInclude Include="src\include\MrRed.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\Check.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
