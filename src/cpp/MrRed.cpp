@@ -1,9 +1,7 @@
-#pragma once
 #include "MrRed.hpp"
 #include <chrono>
 #include <thread>
 //#include <string_view>
-
 
 bool stringEqualsIgnoreCase(std::string_view a, std::string_view b)
 {
@@ -23,7 +21,7 @@ std::string toLowerCase(std::string_view input)
 	return lowerCased;
 }
 
-bool stringEqualsOneOfTheFollowingIgnoreCase(std::string_view reference, std::vector<std::string_view> const& strings)
+bool stringEqualsOneOfTheFollowingIgnoreCase(std::string_view reference, std::vector<std::string_view> const &strings)
 {
 	const std::string referenceLowerCase = toLowerCase(reference);
 	for (std::string_view string : strings)
@@ -32,13 +30,12 @@ bool stringEqualsOneOfTheFollowingIgnoreCase(std::string_view reference, std::ve
 			return true;
 	}
 	return false;
-
 }
 
-void cOutAndWait(std::string_view msg, int const& timeToWait)
+void cOutAndWait(std::string_view msg, int const &timeToWait)
 {
 	std::cout << msg << std::endl;
-	std::this_thread::sleep_for(std::chrono::seconds{ timeToWait });
+	std::this_thread::sleep_for(std::chrono::seconds{timeToWait});
 }
 
 int cinInt()
@@ -58,7 +55,8 @@ int cinInt()
 int cinInt(int lowerLimit, int higherLimit)
 {
 	int input = cinInt();
-	while (input < lowerLimit || input > higherLimit) {
+	while (input < lowerLimit || input > higherLimit)
+	{
 		std::cout << "\nWoah there, that's a strange number -- Please enter something between " << lowerLimit << " and " << higherLimit << ".\n:";
 		input = cinInt();
 	}
