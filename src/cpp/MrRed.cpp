@@ -40,7 +40,7 @@ void cOutAndWait(std::string_view msg, int const &timeToWait)
 
 int cinInt()
 {
-	unsigned int input;
+	int input;
 	std::cin >> input;
 	while (std::cin.fail())
 	{

@@ -147,7 +147,7 @@ bool Student::removeClass(std::string_view className)
 {
 	if (classes.size() == 1)
 		return false;
-	for (int i = 0; i < classes.size(); i++)
+	for (unsigned int i = 0; i < classes.size(); i++)
 	{
 		if (stringEqualsIgnoreCase(classes[i].name, className))
 		{

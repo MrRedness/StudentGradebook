@@ -21,7 +21,7 @@ Student Add::addStudent()
 	std::cout << "\n\nOk, how many classes is " + name + " taking?\n:";
 	numberOfClasses = cinInt(1, 10);
 	std::vector<Class> classes;
-	for (int i = 0; i < numberOfClasses; i++)
+	for (unsigned int i = 0; i < numberOfClasses; i++)
 		classes.emplace_back(Class{"", -1});
 	bool invalidAnswer;
 	do
@@ -35,7 +35,7 @@ Student Add::addStudent()
 			std::cout << "\nPlease enter the name for each class or leave it blank\n";
 			std::string input;
 			std::getline(std::cin, input);
-			for (int i = 0; i < numberOfClasses; i++)
+			for (unsigned i = 0; i < numberOfClasses; i++)
 			{
 				std::cout << "\nClass " << i + 1 << "\n:";
 				std::getline(std::cin, input);
@@ -67,7 +67,7 @@ Student Add::addStudent()
 			std::string stringInput;
 			int gradeInput;
 			std::getline(std::cin, stringInput);
-			for (int i = 0; i < numberOfClasses; i++)
+			for (unsigned int i = 0; i < numberOfClasses; i++)
 			{
 				std::cout << "\nClass " << i + 1 << "\n:";
 				gradeInput = cinInt(-1, 100);
