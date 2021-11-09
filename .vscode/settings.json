@@ -61,6 +61,9 @@
         "cinttypes": "cpp",
         "typeinfo": "cpp",
         "valarray": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "bitset": "cpp",
+        "csignal": "cpp",
+        "shared_mutex": "cpp"
     }
 }

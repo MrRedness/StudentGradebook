@@ -3,7 +3,7 @@
 #include <vector>
 #include <chrono>
 #include "MrRed.hpp"
- #include <string>
+#include <string>
 
 Student Add::addStudent()
 {
@@ -11,23 +11,27 @@ Student Add::addStudent()
 
 	std::string name;
 	int numberOfClasses;
-	std::string nameClasses;
+	std::string nameClassesString;
+	bool nameClassesBool;
+	std::string gradeClassesString;
 
 	std::cout << "What is the student's name?\n:";
 	std::getline(std::cin, name);
 	std::getline(std::cin, name);
 	std::cout << "\n\nOk, how many classes is " + name + " taking?\n:";
 	numberOfClasses = cinInt(1, 10);
+	std::vector<Class> classes;
+	for (int i = 0; i < numberOfClasses; i++)
+		classes.emplace_back(Class{"", -1});
 	bool invalidAnswer;
 	do
 	{
 		invalidAnswer = false;
 		std::cout << "\n\nWould you like to give each class a name? (type yes/no)\n:";
-		std::cin >> nameClasses;
-		if (stringEqualsOneOfTheFollowingIgnoreCase(nameClasses, { "yes", "y" }))
+		std::cin >> nameClassesString;
+		if (stringEqualsOneOfTheFollowingIgnoreCase(nameClassesString, {"yes", "y"}))
 		{
-			//auto namesOfClasses = new std::string[numberOfClasses];
-			std::vector<std::string> namesOfClasses;
+			nameClassesBool = true;
 			std::cout << "\nPlease enter the name for each class or leave it blank\n";
 			std::string input;
 			std::getline(std::cin, input);
@@ -35,18 +39,16 @@ Student Add::addStudent()
 			{
 				std::cout << "\nClass " << i + 1 << "\n:";
 				std::getline(std::cin, input);
-				namesOfClasses.emplace_back(input);
+				classes[i] = Class{input, -1};
 			}
 			//for (unsigned int i = 0; i < numberOfClasses; i++)
 			//{
 			//	std::cout << "\n" << namesOfClasses[i];
 			//}
-			std::cout << "\n\nStudent " << name << " successfully added!\n\n";
-			return Student(name, numberOfClasses, namesOfClasses);
 		}
-		else if (stringEqualsOneOfTheFollowingIgnoreCase(nameClasses, { "no", "n" }))
+		else if (stringEqualsOneOfTheFollowingIgnoreCase(nameClassesString, {"no", "n"}))
 		{
-			std::cout << "\n\nStudent " << name << " successfully added!\n\n";
+			nameClassesBool = false;
 		}
 		else
 		{
@@ -54,5 +56,39 @@ Student Add::addStudent()
 			invalidAnswer = true;
 		}
 	} while (invalidAnswer);
-	return Student(name, numberOfClasses);
+	do
+	{
+		invalidAnswer = false;
+		std::cout << "\n\nWould you like to enter grades for " + name + "'s classes? (type yes/no)\n:";
+		std::cin >> gradeClassesString;
+		if (stringEqualsOneOfTheFollowingIgnoreCase(gradeClassesString, {"yes", "y"}))
+		{
+			std::cout << "\nPlease enter the name for each class or leave it blank\n";
+			std::string input;
+			std::getline(std::cin, input);
+			for (int i = 0; i < numberOfClasses; i++)
+			{
+				std::cout << "\nClass " << i + 1 << "\n:";
+				std::getline(std::cin, input);
+				classes[i] = Class{input, -1};
+			}
+			//for (unsigned int i = 0; i < numberOfClasses; i++)
+			//{
+			//	std::cout << "\n" << namesOfClasses[i];
+			//}
+			std::cout << "\n\nStudent " << name << " successfully added!\n\n";
+			return Student(name, nameClassesBool, true, classes);
+		}
+		else if (stringEqualsOneOfTheFollowingIgnoreCase(gradeClassesString, {"no", "n"}))
+		{
+			std::cout << "\n\nStudent " << name << " successfully added!\n\n";
+			return Student(name, nameClassesBool, false, classes);
+		}
+		else
+		{
+			std::cout << "\nPlease type either \"yes\" or \"no\".";
+			invalidAnswer = true;
+		}
+	} while (invalidAnswer);
+	return Student(name, false, false, classes);
 }
