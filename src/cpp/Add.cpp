@@ -39,12 +39,12 @@ Student Add::addStudent()
 			{
 				std::cout << "\nClass " << i + 1 << "\n:";
 				std::getline(std::cin, input);
-				classes[i] = Class{input, -1};
+				classes[i].name = input;
 			}
-			//for (unsigned int i = 0; i < numberOfClasses; i++)
+			// for (unsigned int i = 0; i < numberOfClasses; i++)
 			//{
 			//	std::cout << "\n" << namesOfClasses[i];
-			//}
+			// }
 		}
 		else if (stringEqualsOneOfTheFollowingIgnoreCase(nameClassesString, {"no", "n"}))
 		{
@@ -63,19 +63,20 @@ Student Add::addStudent()
 		std::cin >> gradeClassesString;
 		if (stringEqualsOneOfTheFollowingIgnoreCase(gradeClassesString, {"yes", "y"}))
 		{
-			std::cout << "\nPlease enter the name for each class or leave it blank\n";
-			std::string input;
-			std::getline(std::cin, input);
+			std::cout << "\nPlease enter the grade for each class (between 0 and 100) or type -1 for no grade.\n";
+			std::string stringInput;
+			int gradeInput;
+			std::getline(std::cin, stringInput);
 			for (int i = 0; i < numberOfClasses; i++)
 			{
 				std::cout << "\nClass " << i + 1 << "\n:";
-				std::getline(std::cin, input);
-				classes[i] = Class{input, -1};
+				gradeInput = cinInt(-1, 100);
+				classes[i].grade = gradeInput;
 			}
-			//for (unsigned int i = 0; i < numberOfClasses; i++)
+			// for (unsigned int i = 0; i < numberOfClasses; i++)
 			//{
 			//	std::cout << "\n" << namesOfClasses[i];
-			//}
+			// }
 			std::cout << "\n\nStudent " << name << " successfully added!\n\n";
 			return Student(name, nameClassesBool, true, classes);
 		}

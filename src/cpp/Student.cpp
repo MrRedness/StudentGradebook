@@ -4,32 +4,18 @@
 #include <thread>
 #include <vector>
 
-// Student::Student(std::string_view name, int const &numberOfClasses)
-// 	: name(name), hasNamesForClasses(false)
-// {
-// 	for (unsigned int i = 0; i < numberOfClasses; i++)
-// 	{
-// 		classes.emplace_back(Class{"", -1});
-// 	}
-// }
-// Student::Student(std::string_view name, int const &numberOfClasses, std::vector<std::string> const &namesOfClasses)
-// 	: name(name), hasNamesForClasses(true)
-// {
-// 	for (unsigned int i = 0; i < numberOfClasses; i++)
-// 	{
-// 		classes.emplace_back(Class{namesOfClasses[i], -1});
-// 	}
-// }
-// Student::Student(std::string_view name, std::vector<std::string> const &namesOfClasses)
-// 	: name(name), hasNamesForClasses(true)
-// {
-// 	for (unsigned int i = 0; i < (namesOfClasses.size() - 1); i++)
-// 	{
-// 		classes.emplace_back(Class{namesOfClasses[i], -1});
-// 	}
-// }
+// Helper Functions
+bool Student::outOfBounds(int const &input)
+{
+	return input <= 0 || input > classes.size();
+}
+
+// Constructors
+
 Student::Student(std::string_view name, bool const &hasNamesForClasses, bool const &hasGradesForClasses, std::vector<Class> const &classes)
 	: name(name), hasNamesForClasses(hasNamesForClasses), hasGradesForClasses(hasGradesForClasses), classes(classes){};
+
+// GETTERS
 
 std::string Student::getName() const
 {
@@ -56,25 +42,18 @@ int Student::getClassPeriod(std::string_view className) const
 	return 0;
 }
 
-bool Student::getHasNamesForClasses() const { return hasNamesForClasses; }
+std::vector<Class> Student::getClasses() const { return classes; }
 
-std::vector<std::string> Student::getNamesOfClasses() const
-{
-	std::vector<std::string> namesOfClasses;
-	for (unsigned int i = 0; i < (classes.size() - 1); i++)
-		namesOfClasses.emplace_back(classes[i].name);
-	return namesOfClasses;
-}
+bool Student::getHasNamesForClasses() const { return hasNamesForClasses; }
+bool Student::getHasGradesForClasses() const { return hasGradesForClasses; }
+
+// SETTERS
 
 void Student::setName(std::string_view newName) { this->name = newName; }
 
-// void Student::setNumberOfClasses(int const& numberOfClasses) {
-//	this->numberOfClasses = numberOfClasses;
-// }
-
 bool Student::setNameOfClass(int const &classPeriod, std::string_view newName)
 {
-	if (classPeriod <= 0 || classPeriod > classes.size())
+	if (outOfBounds(classPeriod))
 		return false;
 	classes[classPeriod - 1].name = newName;
 	return true;
@@ -82,28 +61,38 @@ bool Student::setNameOfClass(int const &classPeriod, std::string_view newName)
 
 bool Student::setNameOfClass(std::string_view oldName, std::string_view newName)
 {
-	for (unsigned int i = 0; i < classes.size(); i++)
+	for (Class &clas : classes)
 	{
-		if (stringEqualsIgnoreCase(classes[i].name, oldName))
+		if (stringEqualsIgnoreCase(clas.name, oldName))
 		{
-			classes[i].name = newName;
+			clas.name = newName;
 			return true;
 		}
 	}
 	return false;
 }
 
-bool Student::setNamesOfClasses(std::vector<std::string> const &newNamesOfClasses)
+bool Student::setGradeForClass(int const &classPeriod, int const &grade)
 {
-	int s = newNamesOfClasses.size();
-	if (s == classes.size())
+	if (outOfBounds(classPeriod) || grade > 100 || grade < 0)
+		return false;
+	classes[classPeriod - 1].grade = grade;
+	return true;
+}
+bool Student::setGradeForClass(std::string_view className, int const &grade)
+{
+	for (Class &clas : classes)
 	{
-		for (int i = 0; i < s; i++)
-			classes[i].name = newNamesOfClasses[i];
-		return true;
+		if (stringEqualsIgnoreCase(clas.name, className))
+		{
+			clas.grade = grade;
+			return true;
+		}
 	}
 	return false;
 }
+
+// ADDERS
 
 bool Student::addClass()
 {
@@ -137,6 +126,7 @@ bool Student::addClass(int const &classPeriod, std::string_view className)
 	return true;
 }
 
+// REMOVERS
 bool Student::removeClass()
 {
 	if (classes.size() == 1)
@@ -174,16 +164,73 @@ std::ostream &operator<<(std::ostream &stream, Student const &student)
 	std::this_thread::sleep_for(std::chrono::milliseconds{500});
 	stream << "\nNumber of classes " << student.getName() << " is taking: " << student.getNumberOfClasses() << std::endl;
 	std::this_thread::sleep_for(std::chrono::milliseconds{500});
-	if (student.getHasNamesForClasses())
+
+	bool hasNames = student.getHasNamesForClasses();
+	bool hasGrades = student.getHasGradesForClasses();
+
+	auto classes = student.getClasses();
+
+	if (hasNames && hasGrades)
 	{
-		stream << "\nThe names of those classes: " << std::endl;
+		stream << "\nThe names & grades of those classes:" << std::endl;
 		std::this_thread::sleep_for(std::chrono::milliseconds{500});
-		for (std::string nameOfClass : student.getNamesOfClasses())
+		int i = 1;
+		for (Class const &clas : classes)
 		{
-			stream << "\n"
-				   << nameOfClass;
+			stream << "\n";
+			if (clas.name == "")
+				stream << i
+					   << " (no name assigned)";
+			else
+				stream << clas.name;
+			stream << " : ";
+			if (clas.grade == -1)
+				stream << "(no grade assigned)";
+			else
+				stream << clas.grade;
+			i++;
 			std::this_thread::sleep_for(std::chrono::milliseconds{500});
 		}
+	}
+	else if (hasNames)
+	{
+		stream << "\nThis student has no grades for their classes (yet)." << std::endl;
+		std::this_thread::sleep_for(std::chrono::milliseconds{500});
+		stream << "\nThe names of those classes: " << std::endl;
+		std::this_thread::sleep_for(std::chrono::milliseconds{500});
+		int i = 1;
+		for (Class const &clas : classes)
+		{
+			stream << "\n";
+			if (clas.name == "")
+				stream << i
+					   << " (no name assigned)";
+			else
+				stream << clas.name;
+			std::this_thread::sleep_for(std::chrono::milliseconds{500});
+		}
+	}
+	else if (hasGrades)
+	{
+		stream << "\nThis student has no names for their classes (yet)." << std::endl;
+		std::this_thread::sleep_for(std::chrono::milliseconds{500});
+		stream << "\nThe grades of those classes: " << std::endl;
+		int i = 1;
+		for (Class const &clas : classes)
+		{
+			stream << "\n"
+				   << i << " : ";
+			if (clas.grade == -1)
+				stream << "(no grade assigned)";
+			else
+				stream << clas.grade;
+			i++;
+			std::this_thread::sleep_for(std::chrono::milliseconds{500});
+		}
+	}
+	else
+	{
+		stream << "\nThis student has no names or grades for their classes (yet)." << std::endl;
 	}
 	return stream;
 }

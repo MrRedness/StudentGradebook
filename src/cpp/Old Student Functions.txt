@@ -1,0 +1,56 @@
+Student::Student(std::string_view name, int const &numberOfClasses)
+    : name(name), hasNamesForClasses(false)
+{
+    for (unsigned int i = 0; i < numberOfClasses; i++)
+    {
+        classes.emplace_back(Class{"", -1});
+    }
+}
+Student::Student(std::string_view name, int const &numberOfClasses, std::vector<std::string> const &namesOfClasses)
+    : name(name), hasNamesForClasses(true)
+{
+    for (unsigned int i = 0; i < numberOfClasses; i++)
+    {
+        classes.emplace_back(Class{namesOfClasses[i], -1});
+    }
+}
+Student::Student(std::string_view name, std::vector<std::string> const &namesOfClasses)
+    : name(name), hasNamesForClasses(true)
+{
+    for (unsigned int i = 0; i < (namesOfClasses.size() - 1); i++)
+    {
+        classes.emplace_back(Class{namesOfClasses[i], -1});
+    }
+}
+
+std::vector<std::string> Student::getNamesOfClasses() const
+{
+    std::vector<std::string> namesOfClasses;
+    for (Class const &clas : classes)
+        namesOfClasses.emplace_back(clas.name);
+    return namesOfClasses;
+}
+std::vector<int> Student::getGradesOfClasses() const
+{
+    std::vector<int> gradesOfClasses;
+    for (Class const &clas : classes)
+        gradesOfClasses.emplace_back(clas.grade);
+    return gradesOfClasses;
+}
+
+void Student::setNumberOfClasses(int const &numberOfClasses)
+{
+    this->numberOfClasses = numberOfClasses;
+}
+
+bool Student::setNamesOfClasses(std::vector<std::string> const &newNamesOfClasses)
+{
+    int s = newNamesOfClasses.size();
+    if (s == classes.size())
+    {
+        for (int i = 0; i < s; i++)
+            classes[i].name = newNamesOfClasses[i];
+        return true;
+    }
+    return false;
+}
