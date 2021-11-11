@@ -1,8 +1,5 @@
 #pragma once
-#include <iostream>
-#include <vector>
-#include <set>
-//#include <string_view>
+#include "PCH.hpp"
 
 struct Class
 {
@@ -19,9 +16,9 @@ private:
 	std::vector<Class> classes;
 	bool outOfBounds(int const &input);
 
-	int const classLimit = 10;
-
 public:
+	static int const classLimit = 10;
+
 	Student(std::string_view name, bool const &hasNamesForClasses, bool const &hasGradesForClasses, std::vector<Class> const &classes);
 
 	std::string getName() const;

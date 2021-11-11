@@ -8,7 +8,7 @@
       "name": "clang++ - Build and debug active file",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${fileDirname}/a.out",
+      "program": "${fileDirname}/../../builds/a.exe",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",

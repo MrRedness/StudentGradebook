@@ -1,4 +1,3 @@
-#include <vector>
 #include "Student.hpp"
 
 namespace Input

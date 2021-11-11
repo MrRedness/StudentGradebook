@@ -1,8 +1,3 @@
-//#include <iostream>
-//#include <thread>
-//#include "Student.hpp"
-//#include <chrono>
-//#include <vector>
 #include "Add.hpp"
 #include "MrRed.hpp"
 #include "Check.hpp"

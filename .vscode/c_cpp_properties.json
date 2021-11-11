@@ -3,11 +3,7 @@
     {
       "name": "Linux",
       "includePath": ["${workspaceFolder}/**"],
-      "defines": [],
-      "compilerPath": "C:\\msys64\\mingw64\\bin\\clang++.exe",
-      "cStandard": "c17",
-      "cppStandard": "c++20",
-      "intelliSenseMode": "linux-clang-x64"
+      "defines": []
     }
   ],
   "version": 4

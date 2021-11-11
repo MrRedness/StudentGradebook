@@ -11,7 +11,7 @@
         "-I",
         "../include",
         "-o",
-        "${fileDirname}/a.out",
+        "${fileDirname}/../../builds/a.exe",
         "${fileDirname}/*.cpp",
         "-Wall",
         "-Weffc++",

@@ -1,8 +1,5 @@
 #include "Student.hpp"
 #include "MrRed.hpp"
-#include <chrono>
-#include <thread>
-#include <vector>
 
 // Helper Functions
 bool Student::outOfBounds(int const &input)
@@ -96,7 +93,7 @@ bool Student::setGradeForClass(std::string_view className, int const &grade)
 
 bool Student::addClass()
 {
-	if (classes.size() == 10)
+	if (classes.size() == classLimit)
 		return false;
 	classes.emplace_back(Class{"", -1});
 	return true;
@@ -104,7 +101,7 @@ bool Student::addClass()
 
 bool Student::addClass(int const &classPeriod)
 {
-	if (classes.size() == 10 || classPeriod <= 0 || classPeriod > (classes.size() + 1))
+	if (classes.size() == classLimit || classPeriod <= 0 || classPeriod > (classes.size() + 1))
 		return false;
 	classes.emplace(classes.begin() + (classPeriod - 1), Class{"", -1});
 	return true;
@@ -112,7 +109,7 @@ bool Student::addClass(int const &classPeriod)
 
 bool Student::addClass(std::string_view className)
 {
-	if (classes.size() == 10)
+	if (classes.size() == classLimit)
 		return false;
 	classes.emplace(classes.end() + 1, Class{std::string(className), -1});
 	return true;
@@ -120,7 +117,7 @@ bool Student::addClass(std::string_view className)
 
 bool Student::addClass(int const &classPeriod, std::string_view className)
 {
-	if (classes.size() == 10 || classPeriod <= 0 || classPeriod > (classes.size() + 1))
+	if (classes.size() == classLimit || classPeriod <= 0 || classPeriod > (classes.size() + 1))
 		return false;
 	classes.emplace(classes.begin() + (classPeriod - 1), Class{std::string(className), -1});
 	return true;

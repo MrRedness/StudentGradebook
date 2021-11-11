@@ -1,7 +1,4 @@
 #include "MrRed.hpp"
-#include <chrono>
-#include <thread>
-//#include <string_view>
 
 bool stringEqualsIgnoreCase(std::string_view a, std::string_view b)
 {

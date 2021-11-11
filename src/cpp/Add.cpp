@@ -1,9 +1,5 @@
 #include "Add.hpp"
-#include <iostream>
-#include <vector>
-#include <chrono>
 #include "MrRed.hpp"
-#include <string>
 
 Student Add::addStudent()
 {
@@ -19,7 +15,7 @@ Student Add::addStudent()
 	std::getline(std::cin, name);
 	std::getline(std::cin, name);
 	std::cout << "\n\nOk, how many classes is " + name + " taking?\n:";
-	numberOfClasses = cinInt(1, 10);
+	numberOfClasses = cinInt(1, Student::classLimit);
 	std::vector<Class> classes;
 	for (unsigned int i = 0; i < numberOfClasses; i++)
 		classes.emplace_back(Class{"", -1});
