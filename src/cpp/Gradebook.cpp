@@ -3,6 +3,12 @@
 #include "Check.hpp"
 #include "Edit.hpp"
 
+void *operator new(size_t size)
+{
+	std::cout << "Allocating " << size << "bytes\n";
+	return malloc(size);
+}
+
 int main()
 {
 	bool runningProgram = true;

@@ -24,8 +24,12 @@ bool stringEqualsOneOfTheFollowingIgnoreCase(std::string_view reference, std::ve
 	for (std::string_view string : strings)
 	{
 		if (referenceLowerCase == toLowerCase(string))
+		{
+			delete &strings;
 			return true;
+		}
 	}
+	delete &strings;
 	return false;
 }
 
