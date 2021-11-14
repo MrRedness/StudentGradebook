@@ -10,13 +10,11 @@ jobs:
   build:
     strategy:
       matrix: 
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [windows-latest]
   
     runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
-    - name: configure
-      run: ./configure
     - name: make
       run: make
