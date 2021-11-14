@@ -66,6 +66,8 @@
     "csignal": "cpp",
     "shared_mutex": "cpp",
     "*.inc": "cpp",
-    "*.def": "cpp"
+    "*.def": "cpp",
+    "optional": "cpp",
+    "ranges": "cpp"
   }
 }

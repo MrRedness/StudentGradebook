@@ -1,0 +1,3 @@
+int i;
+int const &r = i;
+const int *&&x = &r;

@@ -19,8 +19,37 @@ bool stringEqualsOneOfTheFollowingIgnoreCase(std::string_view reference, std::ve
 //     }
 // }
 
-void cOutAndWait(std::string_view msg, int const &timeToWait);
+template <typename T>
+void cOutAndWait(std::string_view msg, std::chrono::duration<T> timeToWait)
+{
+    std::cout << msg << std::endl;
+    std::this_thread::sleep_for(std::chrono::seconds { timeToWait });
+}
 
-int cinInt();
+template <typename T = int>
+requires std::integral<T>
+    T cinInt()
+{
+    int input;
+    std::cin >> input;
+    while(std::cin.fail())
+    {
+        std::cout << "\nWoah there, please enter a number.\n:";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin >> input;
+    }
+    return input;
+}
 
-int cinInt(int lowerLimit, int higherLimit);
+// exact syntax may vary if your compiler isnt sufficently up to date
+std::integral auto cinInt(std::integral auto lowerLimit, std::integral auto higherLimit)
+{
+    auto input = cinInt();
+    while(input < lowerLimit || input > higherLimit)
+    {
+        std::cout << "\nWoah there, that's a strange number -- Please enter something between " << lowerLimit << " and " << higherLimit << ".\n:";
+        input = cinInt();
+    }
+    return input;
+}
