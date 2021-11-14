@@ -19,7 +19,7 @@ Student Add::addStudent()
 	std::vector<Class> classes;
 	for (unsigned int i = 0; i < numberOfClasses; i++)
 		classes.emplace_back(Class{"", -1});
-	bool invalidAnswer;
+	bool invalidAnswer = true;
 	do
 	{
 		invalidAnswer = false;
@@ -52,19 +52,18 @@ Student Add::addStudent()
 			invalidAnswer = true;
 		}
 	} while (invalidAnswer);
-	do
+	while (1)
 	{
-		invalidAnswer = false;
 		std::cout << "\n\nWould you like to enter grades for " + name + "'s classes? (type yes/no)\n:";
 		std::cin >> gradeClassesString;
 		if (stringEqualsOneOfTheFollowingIgnoreCase(gradeClassesString, {"yes", "y"}))
 		{
 			std::cout << "\nPlease enter the grade for each class (between 0 and 100) or type -1 for no grade.\n";
 			std::string stringInput;
-			int gradeInput;
 			std::getline(std::cin, stringInput);
 			for (unsigned int i = 0; i < numberOfClasses; i++)
 			{
+				int gradeInput;
 				std::cout << "\nClass " << i + 1 << "\n:";
 				gradeInput = cinInt(-1, 100);
 				classes[i].grade = gradeInput;
@@ -84,8 +83,7 @@ Student Add::addStudent()
 		else
 		{
 			std::cout << "\nPlease type either \"yes\" or \"no\".";
-			invalidAnswer = true;
 		}
-	} while (invalidAnswer);
-	return Student(name, false, false, classes);
+	}
+	// return Student(name, false, false, classes);
 }

@@ -1,0 +1,6 @@
+stringEqualsIgnoreCase call:[size,tolower]
+toLowerCase call:[tolower] noreturn:[tolower]
+stringEqualsOneOfTheFollowingIgnoreCase call:[toLowerCase]
+cOutAndWait call:[sleep_for] noreturn:[sleep_for]
+cinInt call:[clear,fail,ignore,max]
+cinInt call:[cinInt] noreturn:[cinInt]

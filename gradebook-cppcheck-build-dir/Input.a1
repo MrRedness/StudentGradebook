@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="786102795">
+  <FileInfo check="Class">
+<class name="Class" file="D:/Onedrive/MainPC/Documents/VSCode/StudentGradebook/src/include/Student.hpp" line="4" col="1" hash="18434973186065312794"/>
+  </FileInfo>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="inputGrades" lineNumber="3"/>
+    <functiondecl functionName="inputGrades" lineNumber="9"/>
+    <functioncall functionName="Class"/>
+    <functioncall functionName="Student"/>
+    <functioncall functionName="const"/>
+    <functioncall functionName="inputGrades"/>
+    <functioncall functionName="setGradeForClass"/>
+  </FileInfo>
+</analyzerinfo>

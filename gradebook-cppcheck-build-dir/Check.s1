@@ -1,0 +1,3 @@
+getStudentInfoFrom call:[cOutAndWait,empty,getSpecificStudentInfo,getline,printAllStudentInfo,stringEqualsOneOfTheFollowingIgnoreCase,while] noreturn:[getSpecificStudentInfo,printAllStudentInfo,while]
+printAllStudentInfo
+getSpecificStudentInfo call:[cOutAndWait,empty,getName,getline,push_back,size,toLowerCase,while] noreturn:[cOutAndWait,push_back,while]

@@ -1,0 +1,22 @@
+outOfBounds call:[size] noreturn:[size]
+Student
+getName
+getNumberOfClasses call:[size] noreturn:[size]
+getNameOfClass call:[size]
+getClassPeriod call:[size,stringEqualsIgnoreCase]
+getClasses
+getHasNamesForClasses
+getHasGradesForClasses
+setName
+setNameOfClass call:[outOfBounds]
+setNameOfClass call:[stringEqualsIgnoreCase]
+setGradeForClass call:[outOfBounds]
+setGradeForClass call:[stringEqualsIgnoreCase]
+addClass call:[emplace_back,size]
+addClass call:[begin,emplace,size]
+addClass call:[emplace,end,size,string]
+addClass call:[begin,emplace,size,string]
+removeClass call:[pop_back,size]
+removeClass call:[begin,erase,size]
+removeClass call:[begin,erase,size,stringEqualsIgnoreCase]
+operator<< call:[getClasses,getHasGradesForClasses,getHasNamesForClasses,getName,getNumberOfClasses,sleep_for] noreturn:[sleep_for]

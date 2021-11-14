@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="474907717">
+        <error id="knownConditionTrueFalse" severity="style" msg="Condition &apos;runningProgram&apos; is always true" verbose="Condition &apos;runningProgram&apos; is always true" cwe="571" file0="src/cpp/Gradebook.cpp">
+            <location file="src\cpp\Gradebook.cpp" line="16" column="9" info="Condition &apos;runningProgram&apos; is always true"/>
+            <location file="src\cpp\Gradebook.cpp" line="14" column="24" info="Assignment &apos;runningProgram=true&apos;, assigned value is 1"/>
+        </error>
+  <FileInfo check="Class">
+<class name="Class" file="D:/Onedrive/MainPC/Documents/VSCode/StudentGradebook/src/include/Student.hpp" line="4" col="1" hash="18434973186065312794"/>
+  </FileInfo>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="main" lineNumber="12"/>
+    <functioncall functionName="Class"/>
+    <functioncall functionName="Student"/>
+    <functioncall functionName="addStudent"/>
+    <functioncall functionName="back"/>
+    <functioncall functionName="cOutAndWait"/>
+    <functioncall functionName="choice"/>
+    <functioncall functionName="const"/>
+    <functioncall functionName="editStudents"/>
+    <functioncall functionName="emplace_back"/>
+    <functioncall functionName="false"/>
+    <functioncall functionName="getStudentInfoFrom"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="malloc"/>
+    <functioncall functionName="reenteringChoice"/>
+    <functioncall functionName="runningProgram"/>
+    <functioncall functionName="size"/>
+    <functioncall functionName="stringEqualsOneOfTheFollowingIgnoreCase"/>
+    <functioncall functionName="string_view"/>
+    <functioncall functionName="students"/>
+    <functioncall functionName="true"/>
+    <functioncall functionName="while"/>
+  </FileInfo>
+</analyzerinfo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results version="2">
+    <cppcheck version="2.6"/>
+    <errors>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;gradeInput&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;gradeInput&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/cpp/Add.cpp" sinceDate="11/14/2021">
+            <location file="src\cpp\Add.cpp" line="64"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;invalidResponse&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;invalidResponse&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/cpp/Check.cpp" sinceDate="11/14/2021">
+            <location file="src\cpp\Check.cpp" line="6"/>
+        </error>
+        <error id="knownConditionTrueFalse" severity="style" msg="Condition &amp;#039;runningProgram&amp;#039; is always true" verbose="Condition &amp;#039;runningProgram&amp;#039; is always true" cwe="571" file0="src/cpp/Gradebook.cpp" sinceDate="11/14/2021">
+            <location file="src\cpp\Gradebook.cpp" line="16" info="Condition &amp;#039;runningProgram&amp;#039; is always true"/>
+            <location file="src\cpp\Gradebook.cpp" line="14" info="Assignment &amp;#039;runningProgram=true&amp;#039;, assigned value is 1"/>
+        </error>
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::any_of algorithm instead of a raw loop." verbose="Consider using std::any_of algorithm instead of a raw loop." cwe="398" file0="src/cpp/MrRed.cpp" sinceDate="11/14/2021">
+            <location file="src\cpp\MrRed.cpp" line="27"/>
+        </error>
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::find_if algorithm instead of a raw loop." verbose="Consider using std::find_if algorithm instead of a raw loop." cwe="398" file0="src/cpp/Student.cpp" sinceDate="11/14/2021">
+            <location file="src\cpp\Student.cpp" line="64"/>
+        </error>
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::find_if algorithm instead of a raw loop." verbose="Consider using std::find_if algorithm instead of a raw loop." cwe="398" file0="src/cpp/Student.cpp" sinceDate="11/14/2021">
+            <location file="src\cpp\Student.cpp" line="84"/>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &amp;#039;addClass&amp;#039; is never used." verbose="The function &amp;#039;addClass&amp;#039; is never used." cwe="561" sinceDate="11/14/2021">
+            <location file="src\cpp\Student.cpp" line="118"/>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &amp;#039;getClassPeriod&amp;#039; is never used." verbose="The function &amp;#039;getClassPeriod&amp;#039; is never used." cwe="561" sinceDate="11/14/2021">
+            <location file="src\cpp\Student.cpp" line="32"/>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &amp;#039;getNameOfClass&amp;#039; is never used." verbose="The function &amp;#039;getNameOfClass&amp;#039; is never used." cwe="561" sinceDate="11/14/2021">
+            <location file="src\cpp\Student.cpp" line="24"/>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &amp;#039;removeClass&amp;#039; is never used." verbose="The function &amp;#039;removeClass&amp;#039; is never used." cwe="561" sinceDate="11/14/2021">
+            <location file="src\cpp\Student.cpp" line="143"/>
+        </error>
+    </errors>
+</results>

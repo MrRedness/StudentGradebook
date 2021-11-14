@@ -1,0 +1,2 @@
+inputGrades call:[inputGrades] noreturn:[inputGrades]
+inputGrades call:[setGradeForClass] noreturn:[setGradeForClass]

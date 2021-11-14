@@ -3,12 +3,12 @@
 
 void Check::getStudentInfoFrom(std::vector<Student> const &students)
 {
-	bool invalidResponse;
 	std::string choice;
 	if (students.empty())
 		std::cout << "\nSorry, looks like no students have been added yet.\n\n";
 	else
 	{
+		bool invalidResponse;
 		cOutAndWait("\nOk, let's check student info!\n", 1);
 		std::getline(std::cin, choice);
 		do

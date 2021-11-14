@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="1344291467">
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::any_of algorithm instead of a raw loop." verbose="Consider using std::any_of algorithm instead of a raw loop." cwe="398" file0="src/cpp/MrRed.cpp">
+            <location file="src\cpp\MrRed.cpp" line="27" column="3"/>
+        </error>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="stringEqualsIgnoreCase" lineNumber="3"/>
+    <functiondecl functionName="toLowerCase" lineNumber="13"/>
+    <functiondecl functionName="stringEqualsOneOfTheFollowingIgnoreCase" lineNumber="21"/>
+    <functiondecl functionName="cOutAndWait" lineNumber="36"/>
+    <functiondecl functionName="cinInt" lineNumber="42"/>
+    <functiondecl functionName="cinInt" lineNumber="56"/>
+    <functioncall functionName="c"/>
+    <functioncall functionName="cinInt"/>
+    <functioncall functionName="clear"/>
+    <functioncall functionName="fail"/>
+    <functioncall functionName="for"/>
+    <functioncall functionName="i"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="ignore"/>
+    <functioncall functionName="input"/>
+    <functioncall functionName="max"/>
+    <functioncall functionName="reference"/>
+    <functioncall functionName="size"/>
+    <functioncall functionName="sleep_for"/>
+    <functioncall functionName="streamsize"/>
+    <functioncall functionName="string"/>
+    <functioncall functionName="string_view"/>
+    <functioncall functionName="strings"/>
+    <functioncall functionName="timeToWait"/>
+    <functioncall functionName="toLowerCase"/>
+    <functioncall functionName="tolower"/>
+    <functioncall functionName="while"/>
+  </FileInfo>
+</analyzerinfo>

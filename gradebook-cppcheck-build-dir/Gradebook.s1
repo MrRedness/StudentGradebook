@@ -1,0 +1,2 @@
+operatornew call:[malloc] noreturn:[malloc]
+main call:[addStudent,back,cOutAndWait,editStudents,emplace_back,getStudentInfoFrom,stringEqualsOneOfTheFollowingIgnoreCase,while] noreturn:[cOutAndWait,editStudents,getStudentInfoFrom,while]

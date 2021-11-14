@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="763892045">
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::find_if algorithm instead of a raw loop." verbose="Consider using std::find_if algorithm instead of a raw loop." cwe="398" file0="src/cpp/Student.cpp">
+            <location file="src\cpp\Student.cpp" line="64" column="3"/>
+        </error>
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::find_if algorithm instead of a raw loop." verbose="Consider using std::find_if algorithm instead of a raw loop." cwe="398" file0="src/cpp/Student.cpp">
+            <location file="src\cpp\Student.cpp" line="84" column="3"/>
+        </error>
+  <FileInfo check="Class">
+<class name="Class" file="D:/Onedrive/MainPC/Documents/VSCode/StudentGradebook/src/include/Student.hpp" line="4" col="1" hash="18434973186065312794"/>
+<class name="Student" file="D:/Onedrive/MainPC/Documents/VSCode/StudentGradebook/src/include/Student.hpp" line="10" col="1" hash="16304872850260869006"/>
+  </FileInfo>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="outOfBounds" lineNumber="5"/>
+    <functiondecl functionName="getName" lineNumber="17"/>
+    <functiondecl functionName="getNumberOfClasses" lineNumber="22"/>
+    <functiondecl functionName="getNameOfClass" lineNumber="24"/>
+    <functiondecl functionName="getClassPeriod" lineNumber="32"/>
+    <functiondecl functionName="getClasses" lineNumber="42"/>
+    <functiondecl functionName="getHasNamesForClasses" lineNumber="44"/>
+    <functiondecl functionName="getHasGradesForClasses" lineNumber="45"/>
+    <functiondecl functionName="setName" lineNumber="49"/>
+    <functiondecl functionName="setNameOfClass" lineNumber="51"/>
+    <functiondecl functionName="setNameOfClass" lineNumber="59"/>
+    <functiondecl functionName="setGradeForClass" lineNumber="72"/>
+    <functiondecl functionName="setGradeForClass" lineNumber="79"/>
+    <functiondecl functionName="addClass" lineNumber="94"/>
+    <functiondecl functionName="addClass" lineNumber="102"/>
+    <functiondecl functionName="addClass" lineNumber="110"/>
+    <functiondecl functionName="addClass" lineNumber="118"/>
+    <functiondecl functionName="removeClass" lineNumber="127"/>
+    <functiondecl functionName="removeClass" lineNumber="135"/>
+    <functiondecl functionName="removeClass" lineNumber="143"/>
+    <functioncall functionName="Class"/>
+    <functioncall functionName="Student"/>
+    <functioncall functionName="begin"/>
+    <functioncall functionName="className"/>
+    <functioncall functionName="classNumber"/>
+    <functioncall functionName="classPeriod"/>
+    <functioncall functionName="classes"/>
+    <functioncall functionName="const"/>
+    <functioncall functionName="emplace"/>
+    <functioncall functionName="emplace_back"/>
+    <functioncall functionName="end"/>
+    <functioncall functionName="erase"/>
+    <functioncall functionName="for"/>
+    <functioncall functionName="getClasses"/>
+    <functioncall functionName="getHasGradesForClasses"/>
+    <functioncall functionName="getHasNamesForClasses"/>
+    <functioncall functionName="getName"/>
+    <functioncall functionName="getNumberOfClasses"/>
+    <functioncall functionName="grade"/>
+    <functioncall functionName="hasGrades"/>
+    <functioncall functionName="hasGradesForClasses"/>
+    <functioncall functionName="hasNames"/>
+    <functioncall functionName="hasNamesForClasses"/>
+    <functioncall functionName="i"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="name"/>
+    <functioncall functionName="newName"/>
+    <functioncall functionName="oldName"/>
+    <functioncall functionName="outOfBounds"/>
+    <functioncall functionName="pop_back"/>
+    <functioncall functionName="size"/>
+    <functioncall functionName="sleep_for"/>
+    <functioncall functionName="string"/>
+    <functioncall functionName="stringEqualsIgnoreCase"/>
+    <functioncall functionName="string_view"/>
+  </FileInfo>
+</analyzerinfo>

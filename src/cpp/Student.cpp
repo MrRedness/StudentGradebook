@@ -21,13 +21,13 @@ std::string Student::getName() const
 
 int Student::getNumberOfClasses() const { return classes.size(); }
 
-std::string Student::getNameOfClass(int const &classNumber) const
-{
-	if (classNumber > 0 && classNumber <= classes.size())
-		return classes[classNumber - 1].name;
-	else
-		return "Invalid Class Number";
-}
+// std::string Student::getNameOfClass(int const &classNumber) const
+// {
+// 	if (classNumber > 0 && classNumber <= classes.size())
+// 		return classes[classNumber - 1].name;
+// 	else
+// 		return "Invalid Class Number";
+// }
 
 int Student::getClassPeriod(std::string_view className) const
 {
@@ -39,7 +39,8 @@ int Student::getClassPeriod(std::string_view className) const
 	return 0;
 }
 
-std::vector<Class> Student::getClasses() const { return classes; }
+// std::vector<Class> &Student::getClasses() { return (classes); }
+std::vector<Class> const &Student::getClasses() const { return classes; };
 
 bool Student::getHasNamesForClasses() const { return hasNamesForClasses; }
 bool Student::getHasGradesForClasses() const { return hasGradesForClasses; }
@@ -158,19 +159,19 @@ bool Student::removeClass(std::string_view className)
 std::ostream &operator<<(std::ostream &stream, Student const &student)
 {
 	stream << "\n\nStudent Name: " << student.getName() << std::endl;
-	std::this_thread::sleep_for(std::chrono::milliseconds{500});
+	std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	stream << "\nNumber of classes " << student.getName() << " is taking: " << student.getNumberOfClasses() << std::endl;
-	std::this_thread::sleep_for(std::chrono::milliseconds{500});
+	std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
 	bool hasNames = student.getHasNamesForClasses();
 	bool hasGrades = student.getHasGradesForClasses();
 
-	auto classes = student.getClasses();
+	auto const classes = student.getClasses();
 
 	if (hasNames && hasGrades)
 	{
 		stream << "\nThe names & grades of those classes:" << std::endl;
-		std::this_thread::sleep_for(std::chrono::milliseconds{500});
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		int i = 1;
 		for (Class const &clas : classes)
 		{
@@ -186,15 +187,15 @@ std::ostream &operator<<(std::ostream &stream, Student const &student)
 			else
 				stream << clas.grade;
 			i++;
-			std::this_thread::sleep_for(std::chrono::milliseconds{500});
+			std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		}
 	}
 	else if (hasNames)
 	{
 		stream << "\nThis student has no grades for their classes (yet)." << std::endl;
-		std::this_thread::sleep_for(std::chrono::milliseconds{500});
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		stream << "\nThe names of those classes: " << std::endl;
-		std::this_thread::sleep_for(std::chrono::milliseconds{500});
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		int i = 1;
 		for (Class const &clas : classes)
 		{
@@ -204,13 +205,13 @@ std::ostream &operator<<(std::ostream &stream, Student const &student)
 					   << " (no name assigned)";
 			else
 				stream << clas.name;
-			std::this_thread::sleep_for(std::chrono::milliseconds{500});
+			std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		}
 	}
 	else if (hasGrades)
 	{
 		stream << "\nThis student has no names for their classes (yet)." << std::endl;
-		std::this_thread::sleep_for(std::chrono::milliseconds{500});
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		stream << "\nThe grades of those classes: " << std::endl;
 		int i = 1;
 		for (Class const &clas : classes)
@@ -222,7 +223,7 @@ std::ostream &operator<<(std::ostream &stream, Student const &student)
 			else
 				stream << clas.grade;
 			i++;
-			std::this_thread::sleep_for(std::chrono::milliseconds{500});
+			std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		}
 	}
 	else

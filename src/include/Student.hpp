@@ -25,7 +25,8 @@ public:
 	int getNumberOfClasses() const;
 	std::string getNameOfClass(int const &classNumber) const;
 	int getClassPeriod(std::string_view className) const;
-	std::vector<Class> getClasses() const;
+	// std::vector<Class> &getClasses();
+	std::vector<Class> const &getClasses() const;
 
 	bool getHasNamesForClasses() const;
 	bool getHasGradesForClasses() const;

@@ -1,0 +1,2 @@
+editStudents call:[cOutAndWait,cinInt,editStudent,getName,size,sleep_for] noreturn:[editStudent]
+editStudent call:[setName,setNameOfClass] noreturn:[setNameOfClass]

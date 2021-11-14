@@ -21,6 +21,10 @@ std::string toLowerCase(std::string_view input)
 bool stringEqualsOneOfTheFollowingIgnoreCase(std::string_view reference, std::vector<std::string_view> const &strings)
 {
 	const std::string referenceLowerCase = toLowerCase(reference);
+	// auto lowerCaseFunc = toLowerCase;
+	// return (std::any_of(strings.front(), strings.back(), [&lowerCaseFunc, &referenceLowerCase](std::string_view view)
+	// 					{ return referenceLowerCase == toLowerCase(view); }));
+
 	for (std::string_view string : strings)
 	{
 		if (referenceLowerCase == toLowerCase(string))
@@ -29,7 +33,6 @@ bool stringEqualsOneOfTheFollowingIgnoreCase(std::string_view reference, std::ve
 			return true;
 		}
 	}
-	delete &strings;
 	return false;
 }
 
