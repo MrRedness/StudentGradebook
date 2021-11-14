@@ -26,6 +26,6 @@ windows:
 		$(CPP) -o $@ $^ $(CFLAGS)
 
 .PHONY: ubuntu
-windows:
+ubuntu:
 	$(OUTUbuntu): $(OBJ)
 		$(CPP) -o $@ $^ $(CFLAGS)
