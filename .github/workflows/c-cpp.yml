@@ -15,6 +15,5 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v
     - name: make
       run: make
