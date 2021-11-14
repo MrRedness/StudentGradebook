@@ -2,9 +2,7 @@ CC = clang
 CPP = clang++
 CFLAGS = -I . -std=c++20 -Wall -Wextra -I src/include/ -Wall -Wextra -Wpedantic -O3 -std=c++2a -pthread -Wconversion
 OBJ =  src/cpp/Add.o src/cpp/Check.o src/cpp/Edit.o src/cpp/Gradebook.o src/cpp/Input.o src/cpp/MrRed.o src/cpp/Student.o src/include/PCH.o
-OUT = builds/Gradebook.exe
-OUTWindows = builds/Gradebook-windows.exe
-OUTUbuntu = builds/Gradebook-ubuntu.exe
+OUT = builds/Gradebook
 
 
 %.o: %.c $(DEPS)
@@ -13,16 +11,15 @@ OUTUbuntu = builds/Gradebook-ubuntu.exe
 %.o: %.cpp $(DEPS)
 	$(CPP) -c -o $@ $< $(CFLAGS)
 
-$(OUT): $(OBJ)
+$(OUT)%.exe: $(OBJ)
 	$(CPP) -o $@ $^ $(CFLAGS)
 
-.PHONY: windows clean ubuntu 
-windows:
-	$(OUTWINDOWS): $(OBJ)
-		$(CPP) -o $@ $^ $(CFLAGS)
+windows: $(OBJ)
+	$(CPP) -o builds/Gradebook-windows.exe $^ $(CFLAGS)
+
+ubuntu: $(OBJ)
+	$(CPP) -o builds/Gradebook-ubuntu.exe $^ $(CFLAGS)
+
+.PHONY: clean
 clean:
 	rm -f  $(OBJ)
-
-ubuntu:
-	$(OUTUbuntu): $(OBJ)
-		$(CPP) -o $@ $^ $(CFLAGS)
