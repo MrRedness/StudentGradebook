@@ -23,9 +23,9 @@ clean:
 .PHONY: windows
 windows:
 	$(OUTWINDOWS): $(OBJ)
-	$(CPP) -o $@ $^ $(CFLAGS)
+		$(CPP) -o $@ $^ $(CFLAGS)
 
 .PHONY: ubuntu
 windows:
 	$(OUTUbuntu): $(OBJ)
-	$(CPP) -o $@ $^ $(CFLAGS)
+		$(CPP) -o $@ $^ $(CFLAGS)
