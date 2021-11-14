@@ -12,8 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: make windows
-      run: make
+    - name: make
+      run: make windows
     - name: clean
       run: make clean
   build-ubuntu:
@@ -21,20 +21,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: make ubuntu
-      run: make
+    - name: make
+      run: make ubuntu
     - name: clean
       run: make clean
-  
-  release:
-    runs-on: windows-latest
-    
-    steps:
-      - name: Action Release
-        # You may pin to the exact commit or the version.
-        uses: yakuhzi/release-asset@v1.2.3
-        with:
-          # File to upload to the release
-          file: builds/Gradebook-windows.exe builds/Gradebook-ubuntu.exe
-          # Path to changelog file
-          changelog: changelog.txt
