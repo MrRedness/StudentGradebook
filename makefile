@@ -4,7 +4,7 @@ CFLAGS = -I . -std=c++20 -Wall -Wextra -I src/include/ -Wall -Wextra -Wpedantic 
 OBJ =  src/cpp/Add.o src/cpp/Check.o src/cpp/Edit.o src/cpp/Gradebook.o src/cpp/Input.o src/cpp/MrRed.o src/cpp/Student.o src/include/PCH.o
 OUT = builds/Gradebook.exe
 OUTWindows = builds/Gradebook-windows.exe
-OUTUbuntu = builds/Gradebook-ubunut.exe
+OUTUbuntu = builds/Gradebook-ubuntu.exe
 
 
 %.o: %.c $(DEPS)
@@ -18,7 +18,7 @@ $(OUT): $(OBJ)
 
 .PHONY: clean
 clean:
-	rm -f  $(OBJ) $(OUT) $(OUTWindows) $(OUTUbuntu)
+	rm -f  $(OBJ)
 
 .PHONY: windows
 windows:
