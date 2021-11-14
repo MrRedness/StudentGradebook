@@ -16,16 +16,12 @@ OUTUbuntu = builds/Gradebook-ubuntu.exe
 $(OUT): $(OBJ)
 	$(CPP) -o $@ $^ $(CFLAGS)
 
-.PHONY: clean
-clean:
-	rm -f  $(OBJ)
-
-.PHONY: windows
-windows:
+windows ::
 	$(OUTWINDOWS): $(OBJ)
 		$(CPP) -o $@ $^ $(CFLAGS)
+clean ::
+	rm -f  $(OBJ)
 
-.PHONY: ubuntu
-ubuntu:
+ubuntu ::
 	$(OUTUbuntu): $(OBJ)
 		$(CPP) -o $@ $^ $(CFLAGS)
