@@ -1,0 +1,41 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: make
+      run: make windows
+    - name: upload
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        # Artifact name
+        name: Windows Gradebook
+        # A file, directory or wildcard pattern that describes what to upload
+        path: builds/gradebook-windows.exe
+        # The desired behavior if no files are found using the provided path.
+        if-no-files-found: error
+  build-ubuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: make
+      run: make ubuntu
+    - name: upload
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        # Artifact name
+        name: Ubuntu Gradebook
+        # A file, directory or wildcard pattern that describes what to upload
+        path: builds/gradebook-ubuntu.exe
+        # The desired behavior if no files are found using the provided path.
+        if-no-files-found: error
