@@ -17,29 +17,16 @@ void *operator new(size_t size)
 
 int main()
 {
-    std::thread mainThread { [&]() { // but there already was a main thread... (the one creating this one)
-        // std::thread listenForStop { []() {       // polling user input on both threads is asking for a bad time
-        //     while(1)
-        //     {
-        //         std::string input;
-        //         std::cin >> input;
-        //         if(stringEqualsOneOfTheFollowingIgnoreCase(input, { "stop", "exit", "cancel" }))
-        //         {
-        //             std::cout << "\n\nExiting";
-        //             mainThread.join(); // this doesn't do what you think it does
-        //                                // It makes this thread wait until the mainThread exits
-        //                                // and doesn't do any thing to cause mainThread to exit
-        //         }
-        //         std::this_thread::sleep_for(100ms); // isn't that easier to read?
-        //     }
-        // } };
+    while (1)
+    {
         std::vector<Student> students;
-        cOutAndWait("Welcome to the Gradebook", 1s);
-        cOutAndWait("Would you like to...", 1s);
-        cOutAndWait("Add a Student? (type add)", 1s);
-        cOutAndWait("Check Student Info? (type check)", 1s);
-        cOutAndWait("Edit student name or (add/remove/edit) classes? (type edit)", 1s);
-        cOutAndWait("Or input/change grades? (type input)", 1s);
+        cOutAndWait("Welcome to the Gradebook", .5s);
+        cOutAndWait("Would you like to...", .5s);
+        cOutAndWait("Add a Student? (type add)", .5s);
+        cOutAndWait("Check Student Info? (type check)", .5s);
+        cOutAndWait("Edit student name or (add/remove/edit) classes? (type edit)", .5s);
+        cOutAndWait("Or input/change grades? (type input)", .5s);
+        cOutAndWait("(Type \"exit\" to quit)", .5s);
         std::cout << ":";
         bool reenteringChoice;
         do
@@ -49,7 +36,7 @@ int main()
             reenteringChoice = false;
             if(stringEqualsOneOfTheFollowingIgnoreCase(choice, { "add", "a" }))
             {
-                cOutAndWait("\nOk, let's add a student!\n", 1s);
+                cOutAndWait("\nOk, let's add a student!\n", .5s);
                 students.emplace_back(Add::addStudent());
                 std::cout << students.back() << "\n\n\n";
             }
@@ -63,21 +50,19 @@ int main()
             }
             else if(stringEqualsOneOfTheFollowingIgnoreCase(choice, { "input", "i" }))
             {
-                cOutAndWait("Ok, time to input grades!\n", 1s);
+                cOutAndWait("Ok, time to input grades!\n", .5s);
             }
             else if(stringEqualsOneOfTheFollowingIgnoreCase(choice, { "stop", "exit", "cancel" }))
             {
                 std::cout << "\n\nExiting";
-                return;
+                return 0;
             }
             else
             {
-                cOutAndWait("\nI'm sorry. It seems you entered an invalid choice. Please use \"add\", \"check\", or \"input\".\n", 1s);
+                cOutAndWait("\nI'm sorry. It seems you entered an invalid choice. Please use \"add\", \"check\", or \"input\".\n", .5s);
                 std::cout << ":";
                 reenteringChoice = true;
             }
-        } while(reenteringChoice);
-    } };
-    mainThread.join(); // wait for mainThread to exit
-    return 0;
+        } while (reenteringChoice);
+    }
 }

@@ -2,9 +2,7 @@
 #include "PCH.hpp"
 
 bool stringEqualsIgnoreCase(std::string_view a, std::string_view b);
-
 std::string toLowerCase(std::string_view input);
-
 bool stringEqualsOneOfTheFollowingIgnoreCase(std::string_view reference, std::vector<std::string_view> const &strings);
 
 // template <class... Args>
@@ -23,7 +21,7 @@ template <typename T>
 void cOutAndWait(std::string_view msg, std::chrono::duration<T> timeToWait)
 {
     std::cout << msg << std::endl;
-    std::this_thread::sleep_for(std::chrono::seconds { timeToWait });
+    std::this_thread::sleep_for(timeToWait);
 }
 
 template <typename T = int>
@@ -32,7 +30,7 @@ requires std::integral<T>
 {
     int input;
     std::cin >> input;
-    while(std::cin.fail())
+    while (std::cin.fail())
     {
         std::cout << "\nWoah there, please enter a number.\n:";
         std::cin.clear();
@@ -42,11 +40,42 @@ requires std::integral<T>
     return input;
 }
 
+// template <typename T>
+// // requires std::is_convertible<std::string, T>::value
+// std::string toLowerCase(T input)
+// {
+//     std::string lowerCased;
+//     for (char c : input)
+//         lowerCased += std::tolower(c);
+//     return lowerCased;
+// }
+
+// template <typename... Args>
+// bool stringEqualsOneOfTheFollowingIgnoreCase(std::string_view reference, Args &&...strings)
+// {
+//     return reference == strings...[0] || toLowerCase(reference) == toLowerCase(strings...);
+//     // const std::string referenceLowerCase = toLowerCase(reference);
+//     // // std::vector<std::string> test = std::vector{"five", "four", "three", "two"};
+//     // std::vector<Args...> stringVector = std::vector{std::forward<Args>(strings)...};
+//     // return (std::any_of(stringVector.begin(), stringVector.end(), [&referenceLowerCase](std::string_view view)
+//     //                     { return referenceLowerCase == toLowerCase(view); }));
+
+//     // for(std::string_view string : strings)
+//     // {
+//     //     if(referenceLowerCase == toLowerCase(string))
+//     //     {
+//     //         // delete &strings; // does this not crash for you?
+//     //         return true;
+//     //     }
+//     // }
+//     // return false;
+// }
+
 // exact syntax may vary if your compiler isnt sufficently up to date
 std::integral auto cinInt(std::integral auto lowerLimit, std::integral auto higherLimit)
 {
     auto input = cinInt();
-    while(input < lowerLimit || input > higherLimit)
+    while (input < lowerLimit || input > higherLimit)
     {
         std::cout << "\nWoah there, that's a strange number -- Please enter something between " << lowerLimit << " and " << higherLimit << ".\n:";
         input = cinInt();
