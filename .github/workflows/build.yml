@@ -20,7 +20,7 @@ jobs:
         # Artifact name
         name: Windows Gradebook
         # A file, directory or wildcard pattern that describes what to upload
-        path: builds/gradebook-windows.exe
+        path: builds/Gradebook-windows.exe
         # The desired behavior if no files are found using the provided path.
         if-no-files-found: error
   build-ubuntu:
@@ -36,6 +36,6 @@ jobs:
         # Artifact name
         name: Ubuntu Gradebook
         # A file, directory or wildcard pattern that describes what to upload
-        path: builds/gradebook-ubuntu.exe
+        path: builds/Gradebook-ubuntu.exe
         # The desired behavior if no files are found using the provided path.
         if-no-files-found: error
