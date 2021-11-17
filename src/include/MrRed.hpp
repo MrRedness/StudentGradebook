@@ -50,16 +50,19 @@ requires std::integral<T>
 //     return lowerCased;
 // }
 
-// template <typename... Args>
-// bool stringEqualsOneOfTheFollowingIgnoreCase(std::string_view reference, Args &&...strings)
-// {
-//     return reference == strings...[0] || toLowerCase(reference) == toLowerCase(strings...);
-//     // const std::string referenceLowerCase = toLowerCase(reference);
-//     // // std::vector<std::string> test = std::vector{"five", "four", "three", "two"};
-//     // std::vector<Args...> stringVector = std::vector{std::forward<Args>(strings)...};
-//     // return (std::any_of(stringVector.begin(), stringVector.end(), [&referenceLowerCase](std::string_view view)
-//     //                     { return referenceLowerCase == toLowerCase(view); }));
-
+template <typename... Args>
+requires(std::convertible_to<Args, std::string_view> && ...)
+bool stringEqualsOneOfTheFollowingIgnoreCase(std::string_view reference, Args &&...strings)
+{
+     const std::string referenceLowerCase = toLowerCase(reference);
+    return ((reference == strings)||...);
+    // ((if(referenceLowerCase == toLowerCase(strings))
+    // {
+    //     return true;
+    // }),...);
+    // return false;
+}
+     
 //     // for(std::string_view string : strings)
 //     // {
 //     //     if(referenceLowerCase == toLowerCase(string))

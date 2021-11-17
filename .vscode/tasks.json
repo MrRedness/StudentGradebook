@@ -30,9 +30,23 @@
     },
     {
       "type": "cppbuild",
-      "label": "Make",
+      "label": "Make-Windows",
       "command": "mingw32-make",
-      "args": [],
+      "args": ["windows"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+        }
+      },
+      {
+      "type": "cppbuild",
+      "label": "Make-Arch",
+      "command": "make",
+      "args": ["arch"],
       "options": {
         "cwd": "${workspaceFolder}"
       },

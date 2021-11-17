@@ -20,18 +20,18 @@ std::string toLowerCase(std::string_view input)
     return lowerCased;
 }
 
-bool stringEqualsOneOfTheFollowingIgnoreCase(std::string_view reference, std::vector<std::string_view> const &strings)
-{
-    const std::string referenceLowerCase = toLowerCase(reference);
-    return (std::any_of(strings.begin(), strings.end(), [&referenceLowerCase](std::string_view view) { return referenceLowerCase == toLowerCase(view); }));
+// bool stringEqualsOneOfTheFollowingIgnoreCase(std::string_view reference, std::vector<std::string_view> const &strings)
+// {
+//     const std::string referenceLowerCase = toLowerCase(reference);
+//     return (std::any_of(strings.begin(), strings.end(), [&referenceLowerCase](std::string_view view) { return referenceLowerCase == toLowerCase(view); }));
 
-    // for(std::string_view string : strings)
-    // {
-    //     if(referenceLowerCase == toLowerCase(string))
-    //     {
-    //         // delete &strings; // does this not crash for you?
-    //         return true;
-    //     }
-    // }
-    // return false;
-}
+//     // for(std::string_view string : strings)
+//     // {
+//     //     if(referenceLowerCase == toLowerCase(string))
+//     //     {
+//     //         // delete &strings; // does this not crash for you?
+//     //         return true;
+//     //     }
+//     // }
+//     // return false;
+// }

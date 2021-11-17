@@ -9,17 +9,27 @@
 // literals are typically the only exception I make to the rule of not "using namespace"
 using namespace std::chrono_literals;
 
-void *operator new(size_t size)
-{
-    std::cout << "Allocating " << size << "bytes\n";
-    return malloc(size);
-}
+// int allocatedMem = 0;
+// void *operator new(size_t size)
+// {
+//     std::cout << "Allocating " << size << "bytes\n";
+//     allocatedMem += size;
+//     std::cout << "Total allocated " << allocatedMem << " bytes\n";
+//     return malloc(size);
+// }
+// void operator delete(void *memory, size_t size)
+// {
+//     std::cout << "Freeing " << size << "bytes\n";
+//     allocatedMem -= size;
+//     std::cout << "Total allocated " << allocatedMem << " bytes\n";
+//     free(memory);
+// }
 
 int main()
 {
+    std::vector<Student> students;
     while (1)
     {
-        std::vector<Student> students;
         cOutAndWait("Welcome to the Gradebook", .5s);
         cOutAndWait("Would you like to...", .5s);
         cOutAndWait("Add a Student? (type add)", .5s);
@@ -34,32 +44,32 @@ int main()
             std::string choice;
             std::cin >> choice;
             reenteringChoice = false;
-            if(stringEqualsOneOfTheFollowingIgnoreCase(choice, { "add", "a" }))
+            if (stringEqualsOneOfTheFollowingIgnoreCase(choice, "add", "a"))
             {
                 cOutAndWait("\nOk, let's add a student!\n", .5s);
                 students.emplace_back(Add::addStudent());
                 std::cout << students.back() << "\n\n\n";
             }
-            else if(stringEqualsOneOfTheFollowingIgnoreCase(choice, { "check", "c" }))
+            else if (stringEqualsOneOfTheFollowingIgnoreCase(choice, "check", "c"))
             {
                 Check::getStudentInfoFrom(students);
             }
-            else if(stringEqualsOneOfTheFollowingIgnoreCase(choice, { "edit", "e" }))
+            else if (stringEqualsOneOfTheFollowingIgnoreCase(choice, "edit", "e"))
             {
                 Edit::editStudents(students);
             }
-            else if(stringEqualsOneOfTheFollowingIgnoreCase(choice, { "input", "i" }))
+            else if (stringEqualsOneOfTheFollowingIgnoreCase(choice, "input", "i"))
             {
                 cOutAndWait("Ok, time to input grades!\n", .5s);
             }
-            else if(stringEqualsOneOfTheFollowingIgnoreCase(choice, { "stop", "exit", "cancel" }))
+            else if (stringEqualsOneOfTheFollowingIgnoreCase(choice, "stop", "exit", "cancel"))
             {
                 std::cout << "\n\nExiting";
                 return 0;
             }
             else
             {
-                cOutAndWait("\nI'm sorry. It seems you entered an invalid choice. Please use \"add\", \"check\", or \"input\".\n", .5s);
+                cOutAndWait("\nI'm sorry. It seems you entered an invalid choice. Please use \"add\", \"check\", \"edit\", or \"input\".\n", .5s);
                 std::cout << ":";
                 reenteringChoice = true;
             }

@@ -11,14 +11,17 @@ OUT = builds/Gradebook
 %.o: %.cpp $(DEPS)
 	$(CPP) -c -o $@ $< $(CFLAGS)
 
-$(OUT)%.exe: $(OBJ)
-	$(CPP) -o $@ $^ $(CFLAGS)
+gradebook: $(OBJ)
+	$(CPP) -o builds/Gradebook.exe $^ $(CFLAGS)
 
 windows: $(OBJ)
 	$(CPP) -o builds/Gradebook-windows.exe $^ $(CFLAGS)
 
 ubuntu: $(OBJ)
 	$(CPP) -o builds/Gradebook-ubuntu.exe $^ $(CFLAGS)
+
+arch: $(OBJ)
+	$(CPP) -o builds/Gradebook-arch.exe $^ $(CFLAGS)
 
 .PHONY: clean
 clean:
