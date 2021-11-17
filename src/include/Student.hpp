@@ -31,7 +31,7 @@ public:
     std::size_t getNumberOfClasses() const;
     std::string getNameOfClass(std::size_t classNumber) const;
     std::size_t getClassPeriod(std::string_view className) const;
-    // std::vector<Class> &getClasses();
+    std::vector<Class> &getClasses();
     std::vector<Class> const &getClasses() const;
 
     bool getHasNamesForClasses() const;

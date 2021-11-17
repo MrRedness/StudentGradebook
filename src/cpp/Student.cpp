@@ -45,7 +45,7 @@ std::size_t Student::getClassPeriod(std::string_view className) const
     return 0;
 }
 
-// std::vector<Class> &Student::getClasses() { return (classes); }
+std::vector<Class> &Student::getClasses() { return classes; }
 std::vector<Class> const &Student::getClasses() const { return classes; }
 
 bool Student::getHasNamesForClasses() const { return hasNamesForClasses; }
