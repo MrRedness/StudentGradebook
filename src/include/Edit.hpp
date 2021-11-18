@@ -6,7 +6,7 @@ namespace Edit
     void editStudent(Student &student);
     void editStudentName(Student &student);
     void editStudentClasses(Student &student);
-    Class& getClass(Student &student) const;
+    Class &getClass(Student &student, std::string_view msg);
     void addClass(Student &student);
     void editClass(Class &clas);
     void moveClass(Class &clas);

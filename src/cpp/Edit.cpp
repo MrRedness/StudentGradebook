@@ -28,35 +28,38 @@ void Edit::editStudent(Student &student)
     std::string name = student.getName();
     cOutAndWait("\nEditing Student", 1s);
     std::cout << student;
-    std::cout << "\n\n\nWhat would you like to edit? " << name << "'s name or classes?\n:";
+    std::cout << "What would you like to edit? " << name << "'s name or classes?\n:";
     while (1)
     {
 
         std::cin >> input;
-        if (stringEqualsOneOfTheFollowingIgnoreCase(input, "name"))
+        if (stringEqualsOneOfTheFollowingIgnoreCase(input, "name", "n"))
         {
             editStudentName(student);
+            return;
         }
-        else if (stringEqualsOneOfTheFollowingIgnoreCase(input, "classes"))
+        else if (stringEqualsOneOfTheFollowingIgnoreCase(input, "classes", "class", "c"))
         {
+            editStudentClasses(student);
+            return;
         }
         else
         {
-            std::cout << "\n\nPlease use either \"name\" or \"class\"\n:";
+            std::cout << "\n\nPlease use either \"name\" or \"classes\"\n:";
         }
     }
 }
 
 void Edit::editStudentName(Student &student)
 {
-    std::cout << "\n\nWhat would you like the student's new name to be?\n:";
-    std::getline(std::cin, input);
-    std::getline(std::cin, input);
-    std::cout << "\n\nAre you sure you wish to change the name of " << student.getName() << " to " << input << ".\n:";
-    std::string areYouSure;
-    std::cin >> areYouSure;
     while (1)
     {
+        std::cout << "\n\nWhat would you like the student's new name to be?\n:";
+        std::getline(std::cin, input);
+        std::getline(std::cin, input);
+        std::cout << "\n\nAre you sure you wish to change the name of " << student.getName() << " to " << input << "?\n:";
+        std::string areYouSure;
+        std::cin >> areYouSure;
         if (stringEqualsOneOfTheFollowingIgnoreCase(areYouSure, "yes", "ye", "sure", "y"))
         {
             student.setName(input);
@@ -76,7 +79,7 @@ void Edit::editStudentClasses(Student &student)
         std::cin >> input;
         if (stringEqualsOneOfTheFollowingIgnoreCase(input, "edit", "e"))
         {
-            editClass(getClass(student));
+            editClass(getClass(student, "edit"));
             return;
         }
         else if (stringEqualsOneOfTheFollowingIgnoreCase(input, "add", "a"))
@@ -86,23 +89,19 @@ void Edit::editStudentClasses(Student &student)
         }
         else if (stringEqualsOneOfTheFollowingIgnoreCase(input, "move", "m"))
         {
-            moveClass(getClass(student));
+            moveClass(getClass(student, "move"));
             return;
         }
         else if (stringEqualsOneOfTheFollowingIgnoreCase(input, "delete", "del", "remove", "trash", "rm", "d"))
         {
-            deleteClass(getClass(student));
+            deleteClass(getClass(student, "delete"));
         }
-
-        // if add
-        // if move
-        // if delete
         else
             std::cout << "\n\nPlease use \"edit\", \"add\", \"move\", or \"delete\"\n:";
     }
 }
 
-Class &Edit::getClass(Student &student, std::string msg) const
+Class &Edit::getClass(Student &student, std::string_view msg)
 {
     std::cout << "\n\n"
               << student.getName() << "'s classes:\n";
@@ -112,14 +111,14 @@ Class &Edit::getClass(Student &student, std::string msg) const
         std::cout << ++i << " : " << clas.name << std::endl;
     }
     std::cout << "\n\nWhich class would you like to " << msg << " (type number)?\n:";
-    size_t clasPeriod = cinInt(1, student.getNumberOfClasses()) - 1;
-    Class &clas = student.getClasses().at(clasPeriod);
+    size_t clasPeriod = cinInt(1, student.getNumberOfClasses())1;
+    Class &clas = student.getClasses().at(clasPeriod - 1);
     std::cout << "\n\nOk, you selected class " << clasPeriod << ", name: " << clas.name << ".\n";
     std::this_thread::sleep_for(500ms);
     if (clas.grade != -1)
-        std::cout << student.getName() << "has a " << clas.grade << " in the class.";
+        std::cout << student.getName() << " has a " << clas.grade << " in the class.";
     else
-        std::cout << "The grade for this class has not yet been entered but can be handled using either the \"input\" feature of this app or right here with the \"edit\" feature.";
+        std::cout << "The grade for this class has not yet been entered but can be handled using either the \"input\" feature of this app or right here with the \"edit\" feature.\n\n";
     std::this_thread::sleep_for(500ms);
     return clas;
 }
@@ -135,8 +134,8 @@ void Edit::editClass(Class &clas)
         {
             while (1)
             {
-                std::cin >> input;
                 std::cout << "\n\nOk, what would you like the new name to be?\n:";
+                std::getline(std::cin, input);
                 std::getline(std::cin, input);
                 std::cout << "\n\nAre you sure you wish to change the name of " << clas.name << " to " << input << "?\n:";
                 std::string areYouSure;
@@ -157,7 +156,7 @@ void Edit::editClass(Class &clas)
             {
                 std::cout << "\n\nOk, what would you like the new grade to be?\n:";
                 int newGrade = cinInt(0, 100);
-                std::cout << "\n\nAre you sure you wish to change the grade of " << clas.name << " to " << newGrade << "?\n:";
+                std::cout << "\n\nAre you sure you wish to change the grade of " << clas.name << " from " <<clas.grade << " to " << newGrade << "?\n:";
                 std::string areYouSure;
                 std::cin >> areYouSure;
                 if (stringEqualsOneOfTheFollowingIgnoreCase(areYouSure, "yes", "ye", "sure", "y"))
@@ -179,9 +178,9 @@ void Edit::addClass(Student &student)
 {
 }
 
-void Edit::moveClass(Student &student)
+void Edit::moveClass(Class &clas)
 {
 }
-void Edit::deleteClass(Student &student)
+void Edit::deleteClass(Class &clas)
 {
 }

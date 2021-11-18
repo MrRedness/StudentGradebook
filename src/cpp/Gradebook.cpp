@@ -48,7 +48,7 @@ int main()
             {
                 cOutAndWait("\nOk, let's add a student!\n", .5s);
                 students.emplace_back(Add::addStudent());
-                std::cout << students.back() << "\n\n\n";
+                std::cout << students.back();
             }
             else if (stringEqualsOneOfTheFollowingIgnoreCase(choice, "check", "c"))
             {
@@ -57,6 +57,7 @@ int main()
             else if (stringEqualsOneOfTheFollowingIgnoreCase(choice, "edit", "e"))
             {
                 Edit::editStudents(students);
+                std::this_thread::sleep_for(1s);
                 std::this_thread::sleep_for(1s);
             }
             else if (stringEqualsOneOfTheFollowingIgnoreCase(choice, "input", "i"))
