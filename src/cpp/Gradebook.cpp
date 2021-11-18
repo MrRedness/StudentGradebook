@@ -54,7 +54,7 @@ int main()
             {
                 Check::getStudentInfoFrom(students);
             }
-            else if (stringEqualsOneOfTheFollowingIgnoreCase(choice, "edit", "e"))
+            else if (stringEqualsOneOfTheFollowingIgnoreCase(choice, "edit", "e", "change"))
             {
                 Edit::editStudents(students);
                 std::this_thread::sleep_for(1s);

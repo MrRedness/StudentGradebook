@@ -164,9 +164,9 @@ bool Student::removeClass(std::string_view className)
 
 std::ostream &operator<<(std::ostream &stream, Student const &student)
 {
-    stream << "\n\nStudent Name: " << student.getName() << std::endl;
+    stream << "\n\nStudent Name: " << student.getName() << "\n";
     std::this_thread::sleep_for(500ms);
-    stream << "\nNumber of classes " << student.getName() << " is taking: " << student.getNumberOfClasses() << std::endl;
+    stream << "\nNumber of classes " << student.getName() << " is taking: " << student.getNumberOfClasses() << "\n";
     std::this_thread::sleep_for(500ms);
 
     bool hasNames = student.getHasNamesForClasses();
@@ -176,7 +176,7 @@ std::ostream &operator<<(std::ostream &stream, Student const &student)
 
     if (hasNames && hasGrades)
     {
-        stream << "\nThe names & grades of those classes:" << std::endl;
+        stream << "\nThe names & grades of those classes:\n";
         std::this_thread::sleep_for(500ms);
         int i = 1;
         for (Class const &clas : classes)
@@ -198,9 +198,9 @@ std::ostream &operator<<(std::ostream &stream, Student const &student)
     }
     else if (hasNames)
     {
-        stream << "\nThis student has no grades for their classes (yet)." << std::endl;
+        stream << "\nThis student has no grades for their classes (yet).\n";
         std::this_thread::sleep_for(500ms);
-        stream << "\nThe names of those classes: " << std::endl;
+        stream << "\nThe names of those classes:\n";
         std::this_thread::sleep_for(500ms);
         int i = 1;
         for (Class const &clas : classes)
@@ -216,9 +216,9 @@ std::ostream &operator<<(std::ostream &stream, Student const &student)
     }
     else if (hasGrades)
     {
-        stream << "\nThis student has no names for their classes (yet)." << std::endl;
+        stream << "\nThis student has no names for their classes (yet).\n";
         std::this_thread::sleep_for(500ms);
-        stream << "\nThe grades of those classes: " << std::endl;
+        stream << "\nThe grades of those classes:\n";
         int i = 1;
         for (Class const &clas : classes)
         {
@@ -234,7 +234,7 @@ std::ostream &operator<<(std::ostream &stream, Student const &student)
     }
     else
     {
-        stream << "\nThis student has no names or grades for their classes (yet)." << std::endl;
+        stream << "\nThis student has no names or grades for their classes (yet).\n";
     }
     stream << "\n\n\n";
     std::this_thread::sleep_for(500ms);

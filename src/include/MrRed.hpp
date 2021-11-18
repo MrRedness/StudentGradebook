@@ -20,7 +20,7 @@ bool stringEqualsOneOfTheFollowingIgnoreCase(std::string_view reference, std::ve
 template <typename T>
 void cOutAndWait(std::string_view msg, std::chrono::duration<T> timeToWait)
 {
-    std::cout << msg << std::endl;
+    std::cout << msg << "\n";
     std::this_thread::sleep_for(timeToWait);
 }
 

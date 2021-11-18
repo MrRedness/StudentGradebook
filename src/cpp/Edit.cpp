@@ -16,7 +16,7 @@ void Edit::editStudents(std::vector<Student> &students)
     unsigned int i = 1;
     for (Student &stu : students)
     {
-        std::cout << i << " : " << stu.getName() << std::endl;
+        std::cout << i << " : " << stu.getName() << "\n";
         std::this_thread::sleep_for(500ms);
         i++;
     }
@@ -108,15 +108,15 @@ Class &Edit::getClass(Student &student, std::string_view msg)
     int i = 0;
     for (Class const &clas : student.getClasses())
     {
-        std::cout << ++i << " : " << clas.name << std::endl;
+        std::cout << ++i << " : " << clas.name << "\n";
     }
     std::cout << "\n\nWhich class would you like to " << msg << " (type number)?\n:";
     size_t clasPeriod = cinInt(1, student.getNumberOfClasses());
     Class &clas = student.getClasses().at(clasPeriod - 1);
-    std::cout << "\n\nOk, you selected class " << clasPeriod << ", name: " << clas.name << ".\n";
+    std::cout << "\n\nOk, you selected class " << clasPeriod << ", name: " << clas.name << ".\n\n";
     std::this_thread::sleep_for(500ms);
     if (clas.grade != -1)
-        std::cout << student.getName() << " has a " << clas.grade << " in the class.";
+        std::cout << student.getName() << " has a " << clas.grade << " in the class.\n";
     else
         std::cout << "The grade for this class has not yet been entered but can be handled using either the \"input\" feature of this app or right here with the \"edit\" feature.\n\n";
     std::this_thread::sleep_for(500ms);

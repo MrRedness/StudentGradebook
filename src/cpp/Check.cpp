@@ -22,10 +22,12 @@ void Check::getStudentInfoFrom(std::vector<Student> const &students)
         if (stringEqualsOneOfTheFollowingIgnoreCase(choice, "all students", "all"))
         {
             printAllStudentInfo(students);
+            return;
         }
         else if (stringEqualsOneOfTheFollowingIgnoreCase(choice, "specific", "one", "specific one"))
         {
             getSpecificStudentInfo(students);
+            return;
         }
         else
         {
@@ -39,9 +41,7 @@ void Check::printAllStudentInfo(std::vector<Student> const &students)
 {
     for (Student const &student : students)
         std::cout << student;
-    std::cout << std::endl
-              << std::endl
-              << std::endl;
+    std::cout << "\n\n\n";
 }
 
 void Check::getSpecificStudentInfo(std::vector<Student> const &students)
@@ -54,12 +54,13 @@ void Check::getSpecificStudentInfo(std::vector<Student> const &students)
     {
         std::string inputLC = toLowerCase(input);
         needsToRedo = false;
-        std::vector<const Student *> matchedStudents;
+        std::vector<Student const*> matchedStudents;
         unsigned int i = 0;
         for (Student const &student : students)
         {
             std::string studentNameLC = toLowerCase(student.getName());
-            if (studentNameLC.starts_with(inputLC) || studentNameLC.ends_with(inputLC))
+            std::cout << studentNameLC.substr(studentNameLC.find_last_of(" ") + 1);
+            if (studentNameLC == inputLC || studentNameLC.substr(0, studentNameLC.find_first_of(" ")) == inputLC ||  studentNameLC.substr(studentNameLC.find_last_of(" ") + 1) == inputLC)
                 matchedStudents.push_back(&students[i]);
             i++;
         }
@@ -74,10 +75,8 @@ void Check::getSpecificStudentInfo(std::vector<Student> const &students)
         {
             cOutAndWait("\n\nMultiple students were found with that name.\n\n", 1s);
         }
-        for (const Student *student : matchedStudents)
-            std::cout << *student;
-        std::cout << std::endl
-                  << std::endl
-                  << std::endl;
+        for (Student const* student : matchedStudents)
+            std::cout << "\n\n" << *student;
+        std::cout << "\n\n\n";
     } while (needsToRedo);
 }
