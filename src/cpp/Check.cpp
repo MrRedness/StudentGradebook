@@ -59,7 +59,6 @@ void Check::getSpecificStudentInfo(std::vector<Student> const &students)
         for (Student const &student : students)
         {
             std::string studentNameLC = toLowerCase(student.getName());
-            std::cout << studentNameLC.substr(studentNameLC.find_last_of(" ") + 1);
             if (studentNameLC == inputLC || studentNameLC.substr(0, studentNameLC.find_first_of(" ")) == inputLC ||  studentNameLC.substr(studentNameLC.find_last_of(" ") + 1) == inputLC)
                 matchedStudents.push_back(&students[i]);
             i++;
