@@ -111,7 +111,7 @@ Class &Edit::getClass(Student &student, std::string_view msg)
         std::cout << ++i << " : " << clas.name << std::endl;
     }
     std::cout << "\n\nWhich class would you like to " << msg << " (type number)?\n:";
-    size_t clasPeriod = cinInt(1, student.getNumberOfClasses())1;
+    size_t clasPeriod = cinInt(1, student.getNumberOfClasses());
     Class &clas = student.getClasses().at(clasPeriod - 1);
     std::cout << "\n\nOk, you selected class " << clasPeriod << ", name: " << clas.name << ".\n";
     std::this_thread::sleep_for(500ms);
