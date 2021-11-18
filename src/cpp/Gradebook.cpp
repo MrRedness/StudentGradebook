@@ -57,6 +57,7 @@ int main()
             else if (stringEqualsOneOfTheFollowingIgnoreCase(choice, "edit", "e"))
             {
                 Edit::editStudents(students);
+                std::this_thread::sleep_for(1s);
             }
             else if (stringEqualsOneOfTheFollowingIgnoreCase(choice, "input", "i"))
             {
