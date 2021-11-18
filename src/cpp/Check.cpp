@@ -52,13 +52,13 @@ void Check::getSpecificStudentInfo(std::vector<Student> const &students)
     bool needsToRedo;
     do
     {
-        std::string_view inputLC = toLowerCase(input);
+        std::string inputLC = toLowerCase(input);
         needsToRedo = false;
         std::vector<const Student *> matchedStudents;
         unsigned int i = 0;
         for (Student const &student : students)
         {
-            std::string_view studentNameLC = toLowerCase(student.getName());
+            std::string studentNameLC = toLowerCase(student.getName());
             if (studentNameLC.starts_with(inputLC) || studentNameLC.ends_with(inputLC))
                 matchedStudents.push_back(&students[i]);
             i++;
