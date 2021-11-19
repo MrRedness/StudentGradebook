@@ -8,15 +8,16 @@ struct Class
     int grade;
 
     Class(std::string_view name_, int grade_) // allows conversion from string_view
-        : name { name_ }
-        , grade { grade_ }
-    { }
+        : name{name_}, grade{grade_}
+    {
+    }
 };
 
 class Student
 {
 private:
     std::string name;
+    // std::stringstream namestream;
     bool hasNamesForClasses;
     bool hasGradesForClasses;
     std::vector<Class> classes;
@@ -28,9 +29,10 @@ public:
     Student(std::string_view name, bool hasNamesForClasses, bool hasGradesForClasses, std::vector<Class> const &classes);
 
     std::string getName() const;
+    // std::stringstream &getNameStream() const;
     std::size_t getNumberOfClasses() const;
-    std::string getNameOfClass(std::size_t classNumber) const;
-    std::size_t getClassPeriod(std::string_view className) const;
+    // std::string getNameOfClass(std::size_t classNumber) const;
+    // std::size_t getClassPeriod(std::string_view className) const;
     std::vector<Class> &getClasses();
     std::vector<Class> const &getClasses() const;
 
@@ -38,10 +40,10 @@ public:
     bool getHasGradesForClasses() const;
 
     void setName(std::string_view name);
-    bool setNameOfClass(std::size_t classPeriod, std::string_view newName);
-    bool setNameOfClass(std::string_view oldName, std::string_view newName);
-    bool setGradeForClass(std::size_t classPeriod, int grade);
-    bool setGradeForClass(std::string_view className, int grade);
+    // bool setNameOfClass(std::size_t classPeriod, std::string_view newName);
+    // bool setNameOfClass(std::string_view oldName, std::string_view newName);
+    // bool setGradeForClass(std::size_t classPeriod, int grade);
+    // bool setGradeForClass(std::string_view className, int grade);
 
     bool addClass();
     bool addClass(std::size_t classPeriod); // Moves everything above classPeriod forward one

@@ -9,5 +9,5 @@ void Input::inputGrades(std::vector<Student> &students)
 void Input::inputGrades(Student &student)
 {
     // Insert logic to ask user which class(es) they would like to edit
-    student.setGradeForClass(0, 0);
+    // student.setGradeForClass(0, 0);
 }

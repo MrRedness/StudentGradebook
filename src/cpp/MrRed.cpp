@@ -15,7 +15,7 @@ bool stringEqualsIgnoreCase(std::string_view a, std::string_view b)
 std::string toLowerCase(std::string_view input)
 {
     std::string lowerCased;
-    for(char c : input)
+    for(char const& c : input)
         lowerCased += std::tolower(c);
     return lowerCased;
 }

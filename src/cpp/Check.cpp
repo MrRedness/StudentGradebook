@@ -46,21 +46,29 @@ void Check::printAllStudentInfo(std::vector<Student> const &students)
 
 void Check::getSpecificStudentInfo(std::vector<Student> const &students)
 {
-    std::string input;
+    static std::string input;
     std::cout << "\nWhich student would you like to lookup?\n:";
     std::getline(std::cin, input);
     bool needsToRedo;
     do
     {
-        std::string inputLC = toLowerCase(input);
+        std::stringstream inputLCStream(toLowerCase(input));
+        static std::string inputLC;
         needsToRedo = false;
-        std::vector<Student const*> matchedStudents;
+        std::vector<Student const *> matchedStudents;
         unsigned int i = 0;
         for (Student const &student : students)
         {
-            std::string studentNameLC = toLowerCase(student.getName());
-            if (studentNameLC == inputLC || studentNameLC.substr(0, studentNameLC.find_first_of(" ")) == inputLC ||  studentNameLC.substr(studentNameLC.find_last_of(" ") + 1) == inputLC)
-                matchedStudents.push_back(&students[i]);
+            static std::string studentNameLC;
+            std::stringstream studentNameLCStream(toLowerCase(student.getName()));
+            while (studentNameLCStream >> studentNameLC)
+            {
+                while (inputLCStream >> inputLC)
+                {
+                    if (inputLC == studentNameLC)
+                    matchedStudents.push_back(&students[i]);
+                }
+            }
             i++;
         }
         if (matchedStudents.empty())
@@ -74,8 +82,9 @@ void Check::getSpecificStudentInfo(std::vector<Student> const &students)
         {
             cOutAndWait("\n\nMultiple students were found with that name.\n\n", 1s);
         }
-        for (Student const* student : matchedStudents)
-            std::cout << "\n\n" << *student;
+        for (Student const *student : matchedStudents)
+            std::cout << "\n\n"
+                      << *student;
         std::cout << "\n\n\n";
     } while (needsToRedo);
 }

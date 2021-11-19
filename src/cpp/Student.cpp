@@ -12,9 +12,7 @@ bool Student::outOfBounds(std::size_t input)
 // Constructors
 
 Student::Student(std::string_view name, bool hasNamesForClasses, bool hasGradesForClasses, std::vector<Class> const &classes) // for literals, it can be faster to pass by value
-    : name{name}                                                                                                              // prefer braced initializers always*, it helps distincify initialization from function calls
-      ,
-      hasNamesForClasses{hasNamesForClasses}, hasGradesForClasses{hasGradesForClasses}, classes{classes}
+    : name{name}, hasNamesForClasses{hasNamesForClasses}, hasGradesForClasses{hasGradesForClasses}, classes{classes}
 {
 }
 
@@ -24,6 +22,11 @@ std::string Student::getName() const
 {
     return name;
 }
+
+// std::stringstream &Student::getNameStream()
+// {
+//     return &namestream;
+// }
 
 std::size_t Student::getNumberOfClasses() const { return classes.size(); }
 
@@ -35,15 +38,15 @@ std::size_t Student::getNumberOfClasses() const { return classes.size(); }
 // 		return "Invalid Class Number";
 // }
 
-std::size_t Student::getClassPeriod(std::string_view className) const
-{
-    for (unsigned int i = 0; i < classes.size(); i++)
-    {
-        if (stringEqualsIgnoreCase(classes[i].name, className))
-            return i + 1;
-    }
-    return 0;
-}
+// std::size_t Student::getClassPeriod(std::string_view className) const
+// {
+//     for (unsigned int i = 0; i < classes.size(); i++)
+//     {
+//         if (stringEqualsIgnoreCase(classes[i].name, className))
+//             return i + 1;
+//     }
+//     return 0;
+// }
 
 std::vector<Class> &Student::getClasses() { return classes; }
 std::vector<Class> const &Student::getClasses() const { return classes; }
@@ -55,46 +58,46 @@ bool Student::getHasGradesForClasses() const { return hasGradesForClasses; }
 
 void Student::setName(std::string_view newName) { this->name = newName; }
 
-bool Student::setNameOfClass(std::size_t classPeriod, std::string_view newName)
-{
-    if (outOfBounds(classPeriod))
-        return false;
-    classes[classPeriod - 1].name = newName;
-    return true;
-}
+// bool Student::setNameOfClass(std::size_t classPeriod, std::string_view newName)
+// {
+//     if (outOfBounds(classPeriod))
+//         return false;
+//     classes[classPeriod - 1].name = newName;
+//     return true;
+// }
 
-bool Student::setNameOfClass(std::string_view oldName, std::string_view newName)
-{
-    for (Class &clas : classes)
-    {
-        if (stringEqualsIgnoreCase(clas.name, oldName))
-        {
-            clas.name = newName;
-            return true;
-        }
-    }
-    return false;
-}
+// bool Student::setNameOfClass(std::string_view oldName, std::string_view newName)
+// {
+//     for (Class &clas : classes)
+//     {
+//         if (stringEqualsIgnoreCase(clas.name, oldName))
+//         {
+//             clas.name = newName;
+//             return true;
+//         }
+//     }
+//     return false;
+// }
 
-bool Student::setGradeForClass(std::size_t classPeriod, int grade)
-{
-    if (outOfBounds(classPeriod) || grade > 100 || grade < 0)
-        return false;
-    classes[classPeriod - 1].grade = grade;
-    return true;
-}
-bool Student::setGradeForClass(std::string_view className, int grade)
-{
-    for (Class &clas : classes)
-    {
-        if (stringEqualsIgnoreCase(clas.name, className))
-        {
-            clas.grade = grade;
-            return true;
-        }
-    }
-    return false;
-}
+// bool Student::setGradeForClass(std::size_t classPeriod, int grade)
+// {
+//     if (outOfBounds(classPeriod) || grade > 100 || grade < 0)
+//         return false;
+//     classes[classPeriod - 1].grade = grade;
+//     return true;
+// }
+// bool Student::setGradeForClass(std::string_view className, int grade)
+// {
+//     for (Class &clas : classes)
+//     {
+//         if (stringEqualsIgnoreCase(clas.name, className))
+//         {
+//             clas.grade = grade;
+//             return true;
+//         }
+//     }
+//     return false;
+// }
 
 // ADDERS
 
